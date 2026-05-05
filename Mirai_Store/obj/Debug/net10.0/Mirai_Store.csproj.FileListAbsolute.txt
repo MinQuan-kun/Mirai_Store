@@ -113,3 +113,4 @@ E:\Microsoft_Visual_Studio\Projects\Mirai_Store\Mirai_Store\obj\Debug\net10.0\re
 E:\Microsoft_Visual_Studio\Projects\Mirai_Store\Mirai_Store\obj\Debug\net10.0\Mirai_Store.pdb
 E:\Microsoft_Visual_Studio\Projects\Mirai_Store\Mirai_Store\obj\Debug\net10.0\Mirai_Store.genruntimeconfig.cache
 E:\Microsoft_Visual_Studio\Projects\Mirai_Store\Mirai_Store\obj\Debug\net10.0\ref\Mirai_Store.dll
+E:\Microsoft_Visual_Studio\Projects\Mirai_Store\Mirai_Store\obj\Debug\net10.0\Mirai_Store.sourcelink.json
