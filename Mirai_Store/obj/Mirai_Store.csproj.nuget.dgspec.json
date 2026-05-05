@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Mirai_Store.csproj": {}
+    "E:\\User\\File\\PHP\\Mirai_Store\\Mirai_Store\\Mirai_Store.csproj": {}
   },
   "projects": {
-    "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Mirai_Store.csproj": {
+    "E:\\User\\File\\PHP\\Mirai_Store\\Mirai_Store\\Mirai_Store.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Mirai_Store.csproj",
+        "projectUniqueName": "E:\\User\\File\\PHP\\Mirai_Store\\Mirai_Store\\Mirai_Store.csproj",
         "projectName": "Mirai_Store",
-        "projectPath": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Mirai_Store.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\obj\\",
+        "projectPath": "E:\\User\\File\\PHP\\Mirai_Store\\Mirai_Store\\Mirai_Store.csproj",
+        "packagesPath": "C:\\Users\\giang\\.nuget\\packages\\",
+        "outputPath": "E:\\User\\File\\PHP\\Mirai_Store\\Mirai_Store\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\Microsoft_Visual_Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\giang\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -90,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.200-preview.0.26103.119/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

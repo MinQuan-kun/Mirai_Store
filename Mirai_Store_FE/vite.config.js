@@ -11,6 +11,13 @@ export default defineConfig({
         tailwindcss(),
     ],
     server: {
+        proxy: {
+            '/api/backend': {
+                target: 'http://localhost:5185',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api\/backend/, '/api'),
+            },
+        },
         watch: {
             ignored: ['**/storage/framework/views/**'],
         },

@@ -1,0 +1,14 @@
+Shop_game/
+
+# .NET Backend
+Mirai_Store/bin/
+Mirai_Store/obj/
+.vs/
+
+# Laravel Frontend (Thư mục con)
+Mirai_Store_FE/.env
+Mirai_Store_FE/node_modules/
+Mirai_Store_FE/public/build/
+Mirai_Store_FE/storage/*.key
+Mirai_Store_FE/vendor/
+Mirai_Store_FE/database/database.sqlite
