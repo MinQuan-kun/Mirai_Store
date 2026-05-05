@@ -1,0 +1,235 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\models\\order\\createorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\order\\createorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\internal\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\models\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\models\\auth\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\auth\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\internal\\services\\interface\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\services\\interface\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\internal\\services\\gameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\services\\gameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\internal\\repositories\\interface\\itransactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\repositories\\interface\\itransactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\models\\auth\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B710FA6-C9CA-4272-9A49-1CAC599FF3B9}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\auth\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\appsettings.json",
+              "RelativeDocumentMoniker": "Mirai_Store\\appsettings.json",
+              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\appsettings.json",
+              "RelativeToolTip": "Mirai_Store\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-05T11:23:03.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Auth\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Auth\\LoginRequest.cs",
+              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Auth\\LoginRequest.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Auth\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:20:58.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegisterRequest.cs",
+              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Auth\\RegisterRequest.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Auth\\RegisterRequest.cs",
+              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Auth\\RegisterRequest.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Auth\\RegisterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:20:58.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateOrderRequest.cs",
+              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Order\\CreateOrderRequest.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Order\\CreateOrderRequest.cs",
+              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Order\\CreateOrderRequest.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Order\\CreateOrderRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:19:56.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IGameService.cs",
+              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Services\\Interface\\IGameService.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Services\\Interface\\IGameService.cs",
+              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Services\\Interface\\IGameService.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Services\\Interface\\IGameService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:19:21.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Program.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Program.cs",
+              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Program.cs",
+              "RelativeToolTip": "Mirai_Store\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:14:27.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GameService.cs",
+              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Services\\GameService.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Services\\GameService.cs",
+              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Services\\GameService.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Services\\GameService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:19:19.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Services\\AuthService.cs",
+              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Services\\AuthService.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Services\\AuthService.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAnwEgAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:19:12.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ITransactionRepository.cs",
+              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\Interface\\ITransactionRepository.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Repositories\\Interface\\ITransactionRepository.cs",
+              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\Interface\\ITransactionRepository.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Repositories\\Interface\\ITransactionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:19:06.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AuthResponse.cs",
+              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Auth\\AuthResponse.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Auth\\AuthResponse.cs",
+              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Auth\\AuthResponse.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Auth\\AuthResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:14:04.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Controllers\\AuthController.cs",
+              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Mirai_Store\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:13:07.153Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
