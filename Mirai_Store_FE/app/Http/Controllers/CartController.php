@@ -17,56 +17,50 @@ class CartController extends Controller
     
     public function index()
     {
-        $response = $this->backend->get('Cart');
         
-        if ($response->successful()) {
-            $data = $response->json();
-            $cartItems = $data['items'] ?? [];
-            $total = $data['total'] ?? 0;
-            return view('cart.index', compact('cartItems', 'total'));
-        }
+        $cartItems = collect([
+            (object)[
+                'id' => 1,
+                'price_at_time' => 1290000,
+                'game' => (object)[
+                    'id' => 1,
+                    'name' => 'Black Myth: Wukong',
+                    'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681024/Game/673758fff46261230006323c_maxresdefault.jpg',
+                    'publisher' => 'Game Science'
+                ]
+            ],
+            (object)[
+                'id' => 2,
+                'price_at_time' => 990000,
+                'game' => (object)[
+                    'id' => 2,
+                    'name' => 'Elden Ring',
+                    'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681146/Game/67375979f46261230006323e_elden-ring-shadow-of-the-erdtree-02.jpg',
+                    'publisher' => 'FromSoftware'
+                ]
+            ]
+        ]);
 
-        return redirect()->back()->with('error', 'Không thể lấy dữ liệu giỏ hàng.');
+        $total = $cartItems->sum('price_at_time');
+
+        return view('cart.index', compact('cartItems', 'total'));
     }
 
     
     public function addToCart(Request $request)
     {
-        $request->validate([
-            'game_id' => 'required'
-        ]);
-
-        $response = $this->backend->post('Cart/add', [
-            'gameId' => $request->game_id
-        ]);
-
-        $data = $response->json();
-
-        if ($request->wantsJson()) {
-            return response()->json([
-                'status' => $data['status'] ?? ($response->successful() ? 'success' : 'error'),
-                'message' => $data['message'] ?? 'Có lỗi xảy ra.'
-            ], $response->status());
-        }
-
-        return back()->with($data['status'] ?? 'info', $data['message'] ?? 'Kết quả không xác định');
+        return back()->with('success', 'Đã thêm vào giỏ hàng (Mock)');
     }
 
     
     public function remove($id)
     {
-        $response = $this->backend->delete("Cart/remove/{$id}");
-        $data = $response->json();
-
-        return back()->with($data['status'] ?? 'success', $data['message'] ?? 'Đã thực hiện.');
+        return back()->with('success', 'Đã xóa khỏi giỏ hàng (Mock)');
     }
 
     
     public function clear()
     {
-        $response = $this->backend->delete('Cart/clear');
-        $data = $response->json();
-
-        return back()->with($data['status'] ?? 'success', $data['message'] ?? 'Đã làm trống giỏ hàng.');
+        return back()->with('success', 'Đã làm trống giỏ hàng (Mock)');
     }
 }
