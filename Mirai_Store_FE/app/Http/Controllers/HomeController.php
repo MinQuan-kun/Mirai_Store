@@ -76,6 +76,32 @@ class HomeController extends Controller
 
     public function show($id)
     {
-        return "Game Detail Page for ID: $id - To be connected with .NET API";
+        
+        $game = [
+            'id' => $id,
+            'name' => 'Black Myth: Wukong',
+            'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681024/Game/673758fff46261230006323c_maxresdefault.jpg',
+            'price' => 1290000,
+            'publisher' => 'Game Science',
+            'release_date' => '20/08/2024',
+            'description' => "Black Myth: Wukong là một game nhập vai hành động bắt nguồn từ thần thoại Trung Hoa. Câu chuyện dựa trên Tây Du Ký, một trong Bốn tác phẩm kinh điển vĩ đại của văn học Trung Quốc. Bạn sẽ lên đường với tư cách là Người được định mệnh để dấn thân vào những thử thách và kỳ quan phía trước, để vén bức màn che giấu sự thật đằng sau huyền thoại về một vinh quang huy hoàng từ quá khứ.",
+        ];
+
+        $relatedGames = [
+            [
+                'id' => '1',
+                'name' => 'Genshin Impact',
+                'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681285/Game/67375a03496150f55b9e8306_Genshin-Impact-03.jpg',
+                'price' => 0
+            ],
+            [
+                'id' => '3',
+                'name' => 'Elden Ring',
+                'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681146/Game/67375979f46261230006323e_elden-ring-shadow-of-the-erdtree-02.jpg',
+                'price' => 990000
+            ]
+        ];
+
+        return view('games.show', compact('game', 'relatedGames'));
     }
 }
