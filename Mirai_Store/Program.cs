@@ -17,10 +17,12 @@ builder.Services.AddScoped<MongoDbContext>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IGameRepository, GameRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
 
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IGameService, GameService>();
+builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddSingleton<JwtHelper>();
 
 

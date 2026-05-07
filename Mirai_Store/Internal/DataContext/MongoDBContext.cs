@@ -1,4 +1,4 @@
-﻿using MongoDB.Bson;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using Mirai_Store.Internal.Contants;
 using Mirai_Store.Internal.Entities;
@@ -32,6 +32,8 @@ namespace Mirai_Store.Internal.DataContext
             => _database.GetCollection<Transaction>("transactions");
         public IMongoCollection<Wishlist> Wishlists
             => _database.GetCollection<Wishlist>("wishlists");
+        public IMongoCollection<Cart> Carts
+            => _database.GetCollection<Cart>("carts");
 
 
         public async Task<bool> CheckConnectionAsync()
