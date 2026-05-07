@@ -49,8 +49,10 @@
             </nav>
             <div class="flex-1 flex items-center justify-end gap-4">
 
-                @guest
-                    <div class="hidden md:flex items-center gap-4">
+            <div class="flex-1 flex items-center justify-end gap-4">
+
+                @if(!Session::has('auth_token'))
+                    <div class="flex items-center gap-4">
                         <a href="{{ route('login') }}"
                             class="text-gray-600 dark:text-gray-300 hover:text-miku-500 font-medium transition-colors">
                             Đăng nhập
@@ -60,45 +62,16 @@
                             Đăng ký
                         </a>
                     </div>
-                @endguest
+                @endif
 
-                @auth
+                @if(Session::has('auth_token'))
                     
                     <a href="{{ route('cart.index') }}"
-                        class="relative text-gray-700 dark:text-gray-300 hover:text-brand-500 dark:hover:text-brand-400 transition">
+                        class="relative text-gray-700 dark:text-gray-300 hover:text-miku-500 dark:hover:text-miku-400 transition">
                         <i class="fa-solid fa-shopping-cart fa-lg"></i>
-                        @php
-                            $cartCount = \App\Models\Cart::where('user_id', Auth::id())->count();
-                        @endphp
-                        @if ($cartCount > 0)
-                            <span id="cart-count"
-                                class="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-extrabold rounded-full h-4 w-4 flex items-center justify-center shadow-md shadow-red-500/50 border border-white dark:border-black animate-pulse z-10">
-                                {{ $cartCount }}
-                            </span>
-                        @endif
-                    </a>
-
-                    
-                    <a href="{{ route('wishlist.index') }}"
-                        class="text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition group flex items-center">
-
                         
-                        <div class="relative inline-block">
-                            <i class="fa-solid fa-heart fa-lg group-hover:scale-110 transition-transform duration-200"></i>
-
-                            @php
-                                $wishlistCount = \App\Models\Wishlist::where('user_id', Auth::id())->count();
-                            @endphp
-
-                            @if ($wishlistCount > 0)
-                                <span id="wishlist-count"
-                                    class="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-extrabold rounded-full h-4 w-4 flex items-center justify-center shadow-md shadow-red-500/50 border border-white dark:border-black animate-pulse z-10">
-                                    {{ $wishlistCount }}
-                                </span>
-                            @endif
-                        </div>
                     </a>
-                @endauth
+                @endif
 
                 <button onclick="toggleTheme()"
                     class="p-2 rounded-full text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors">
@@ -115,27 +88,16 @@
                     </svg>
                 </button>
 
-                @auth
-                    @if (Auth::user()->role === 'admin')
-                        <a href="{{ route('admin.dashboard') }}"
-                            class="hidden md:flex items-center gap-1 px-3 py-1.5 bg-yellow-400 hover:bg-yellow-500 text-black text-sm font-bold rounded-full transition shadow-sm">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                            </svg>
-                            Quản trị
-                        </a>
-                    @endif
-
+                @if(Session::has('auth_token'))
                     <div class="relative ml-1" x-data="{ dropdownOpen: false }">
                         <button @click="dropdownOpen = !dropdownOpen"
                             class="flex items-center gap-2 hover:opacity-80 transition focus:outline-none">
                             <span class="hidden md:block text-sm font-medium text-gray-700 dark:text-gray-200">
-                                {{ Auth::user()->name }}
+                                {{ Session::get('user_name', 'Tài khoản') }}
                             </span>
                             <div
                                 class="h-9 w-9 rounded-full overflow-hidden border border-miku-200 dark:border-gray-600 shadow-sm">
-                                <img src="{{ Auth::user()->avatar ?? 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) }}"
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode(Session::get('user_name', 'U')) }}"
                                     class="h-full w-full object-cover">
                             </div>
                         </button>
@@ -151,7 +113,7 @@
                                     <i class="fa-solid fa-wallet text-green-600 dark:text-green-400"></i>
                                     <span
                                         class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition">
-                                        {{ number_format(Auth::user()->balance ?? 0, 0, ',', '.') }} đ
+                                        {{ number_format(Session::get('user_balance', 0), 0, ',', '.') }} đ
                                     </span>
                                 </a>
                             </div>
@@ -160,52 +122,41 @@
                                 class="px-4 py-3 border-b border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/50">
                                 <p class="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase">Tài khoản</p>
                                 <p class="text-sm font-bold text-gray-800 dark:text-white truncate mt-0.5">
-                                    {{ Auth::user()->email }}
+                                    {{ Session::get('user_email', 'user@example.com') }}
                                 </p>
                             </div>
 
-                            <div class="py-1">
+                             <div class="py-1">
                                 <a href="{{ route('profile.edit') }}"
                                     class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-miku-50 dark:hover:bg-gray-700 hover:text-miku-600 dark:hover:text-white transition-colors">
-                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-miku-500" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                    </svg>
-                                    Hồ sơ cá nhân
-                                </a>
+                                     <svg class="w-5 h-5 text-gray-400 group-hover:text-miku-500" fill="none"
+                                         stroke="currentColor" viewBox="0 0 24 24">
+                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                     </svg>
+                                     Hồ sơ cá nhân
+                                 </a>
 
-                                <a href="{{ route('orders.index') }}"
-                                    class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-miku-50 dark:hover:bg-gray-700 hover:text-miku-600 dark:hover:text-white transition-colors">
-                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-miku-500" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                                    </svg>
-                                    Đơn hàng của tôi
-                                </a>
+                                 <a href="{{ route('orders.index') }}"
+                                     class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-miku-50 dark:hover:bg-gray-700 hover:text-miku-600 dark:hover:text-white transition-colors">
+                                     <svg class="w-5 h-5 text-gray-400 group-hover:text-miku-500" fill="none"
+                                         stroke="currentColor" viewBox="0 0 24 24">
+                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                             d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                                     </svg>
+                                     Đơn hàng của tôi
+                                 </a>
 
-                                <a href="{{ route('wishlist.index') }}"
-                                    class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-miku-50 dark:hover:bg-gray-700 hover:text-miku-600 dark:hover:text-white transition-colors">
-                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-pink-500" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                        </path>
-                                    </svg>
-                                    Danh sách yêu thích
-                                </a>
-
-                                <a href="#"
-                                    class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-miku-50 dark:hover:bg-gray-700 hover:text-miku-600 dark:hover:text-white transition-colors">
-                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-pink-500" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                        </path>
-                                    </svg>
-                                    Donate ủng hộ
-                                </a>
+                                 <a href="#"
+                                     class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-miku-50 dark:hover:bg-gray-700 hover:text-miku-600 dark:hover:text-white transition-colors">
+                                     <svg class="w-5 h-5 text-gray-400 group-hover:text-pink-500" fill="none"
+                                         stroke="currentColor" viewBox="0 0 24 24">
+                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                         </path>
+                                     </svg>
+                                     Danh sách yêu thích
+                                 </a>
                             </div>
 
                             <div class="border-t border-gray-100 dark:border-gray-700 my-1"></div>
@@ -225,7 +176,7 @@
                             </form>
                         </div>
                     </div>
-                @endauth
+                @endif
 
             </div>
         </div>
