@@ -12,7 +12,7 @@
                     <nav class="flex items-center text-sm text-gray-500 dark:text-gray-400">
                         <a href="{{ route('home') }}" class="hover:text-miku-500 transition">Trang chủ</a>
                         <span class="mx-3">/</span>
-                        <span class="text-gray-800 dark:text-white font-semibold max-w-xs truncate">{{ $game['name'] }}</span>
+                        <span class="text-gray-800 dark:text-white font-semibold max-w-xs truncate">{{ $game->name }}</span>
                     </nav>
                 </div>
             </div>
@@ -25,20 +25,20 @@
                     
                     <div class="rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 group">
                         <div class="relative aspect-video bg-gray-900 overflow-hidden">
-                            <img src="{{ $game['image'] }}"
-                                alt="{{ $game['name'] }}"
+                            <img src="{{ $game->image }}"
+                                alt="{{ $game->name }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
 
                             
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                             <div class="absolute bottom-4 right-4 flex flex-col items-end gap-2">
-                                @if($game['price'] == 0)
+                                @if($game->price == 0)
                                     <span class="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-lg font-bold px-6 py-3 rounded-xl shadow-2xl">
                                         <i class="fa-solid fa-gift mr-2"></i>Miễn phí
                                     </span>
                                 @else
                                     <span class="bg-gradient-to-r from-miku-500 to-miku-600 text-white text-lg font-bold px-6 py-3 rounded-xl shadow-2xl">
-                                        {{ number_format($game['price'], 0, ',', '.') }} VNĐ
+                                        {{ number_format($game->price, 0, ',', '.') }} VNĐ
                                     </span>
                                 @endif
                             </div>
@@ -48,7 +48,7 @@
                     
                     <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
                         <h1 class="text-4xl font-black text-gray-900 dark:text-white mb-2 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                            {{ $game['name'] }}</h1>
+                            {{ $game->name }}</h1>
 
                         <div class="flex flex-wrap gap-6 mb-8 text-sm pt-4 border-t border-gray-100 dark:border-gray-700">
                             <div class="flex items-center gap-2">
@@ -57,7 +57,7 @@
                                 </div>
                                 <div>
                                     <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-semibold">Nhà phát hành</p>
-                                    <p class="font-bold text-gray-900 dark:text-white">{{ $game['publisher'] }}</p>
+                                    <p class="font-bold text-gray-900 dark:text-white">{{ $game->publisher }}</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-2">
@@ -66,17 +66,17 @@
                                 </div>
                                 <div>
                                     <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-semibold">Ngày đăng</p>
-                                    <p class="font-bold text-gray-900 dark:text-white">{{ $game['release_date'] }}</p>
+                                    <p class="font-bold text-gray-900 dark:text-white">{{ $game->release_date }}</p>
                                 </div>
                             </div>
                         </div>
 
                         
                         <div class="flex flex-col sm:flex-row gap-3 pt-6 border-t border-gray-100 dark:border-gray-700">
-                            @if($game['price'] > 0)
+                            @if($game->price > 0)
                                 <form action="{{ route('cart.add') }}" method="POST" class="flex-1">
                                     @csrf
-                                    <input type="hidden" name="game_id" value="{{ $game['id'] }}">
+                                    <input type="hidden" name="game_id" value="{{ $game->id }}">
                                     <button type="submit"
                                         class="w-full bg-miku-500 hover:bg-miku-600 text-white font-bold py-3 px-6 rounded-xl text-center transition shadow-lg shadow-miku-500/30 flex items-center justify-center gap-2 group">
                                         <i class="fa-solid fa-cart-plus group-hover:scale-110 transition"></i>
@@ -107,7 +107,7 @@
                             Giới thiệu game
                         </h2>
                         <div class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 leading-relaxed whitespace-pre-line text-base">
-                            {{ $game['description'] }}
+                            {{ $game->description }}
                         </div>
                     </div>
                 </div>
@@ -139,17 +139,17 @@
                         </h3>
                         <div class="space-y-3">
                             @foreach($relatedGames as $related)
-                                <a href="{{ route('game.show', $related['id']) }}"
+                                <a href="{{ route('game.show', $related->id) }}"
                                     class="flex gap-4 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition group">
                                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden relative shadow-md">
-                                        <img src="{{ $related['image'] }}"
+                                        <img src="{{ $related->image }}"
                                             class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
                                     </div>
                                     <div class="flex-1">
                                         <h4 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-miku-500 dark:group-hover:text-miku-400 transition line-clamp-2 mb-2">
-                                            {{ $related['name'] }}
+                                            {{ $related->name }}
                                         </h4>
-                                        <span class="text-sm font-black text-miku-600 dark:text-miku-400">{{ number_format($related['price'], 0, ',', '.') }}đ</span>
+                                        <span class="text-sm font-black text-miku-600 dark:text-miku-400">{{ number_format($related->price, 0, ',', '.') }}đ</span>
                                     </div>
                                 </a>
                             @endforeach

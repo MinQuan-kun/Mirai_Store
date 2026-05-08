@@ -22,7 +22,14 @@ Route::get('/wallet', [HomeController::class, 'index'])->name('wallet.index');
 Route::get('/orders', [HomeController::class, 'index'])->name('orders.index');
 Route::post('/chatbot/send', [HomeController::class, 'index'])->name('chatbot.send');
 Route::get('/wishlist', [HomeController::class, 'index'])->name('wishlist.index');
-Route::get('/checkout', [HomeController::class, 'index'])->name('checkout');
+Route::get('/checkout', [App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout/process', [App\Http\Controllers\OrderController::class, 'checkout'])->name('checkout.process');
+Route::post('/checkout/validate-discount', [App\Http\Controllers\CheckoutController::class, 'validateDiscount'])->name('checkout.validate.discount');
+Route::get('/wallet/deposit', [HomeController::class, 'index'])->name('wallet.deposit');
+
+
+Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
+Route::get('/orders/{id}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
 
 
 Route::middleware('auth.custom')->group(function () {
@@ -36,5 +43,6 @@ Route::middleware('auth.custom')->group(function () {
     Route::delete('/user/profile', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::get('/cart/remove/{id}', [CartController::class, 'remove']); 
     Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 });

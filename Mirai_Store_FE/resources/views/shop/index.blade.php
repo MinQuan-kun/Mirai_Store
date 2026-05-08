@@ -42,14 +42,14 @@
 
                             
                             <div class="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
-                                <a href="{{ route('game.show', $game['id']) }}" class="block w-full h-full">
-                                    <img src="{{ $game['image'] }}"
-                                        alt="{{ $game['name'] }}"
+                                <a href="{{ route('game.show', $game->id) }}" class="block w-full h-full">
+                                    <img src="{{ $game->image }}"
+                                        alt="{{ $game->name }}"
                                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out">
                                 </a>
 
                                 <div class="absolute top-3 right-3 flex flex-col items-end gap-1 pointer-events-none">
-                                    @if ($game['price'] == 0)
+                                    @if ($game->price == 0)
                                     <span class="bg-green-500/90 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-sm animate-pulse">
                                         Miễn phí
                                     </span>
@@ -60,24 +60,24 @@
                             
                             <div class="p-4 flex flex-col flex-grow">
                                 <h3 class="text-base font-bold text-gray-900 dark:text-white leading-tight mb-2 line-clamp-2 group-hover:text-miku-500 transition-colors">
-                                    <a href="{{ route('game.show', $game['id']) }}">
-                                        {{ $game['name'] }}
+                                    <a href="{{ route('game.show', $game->id) }}" class="after:absolute after:inset-0">
+                                        {{ $game->name }}
                                     </a>
                                 </h3>
 
                                 <div class="mt-auto pt-3 border-t border-gray-100 dark:border-gray-700 flex items-end justify-between">
                                     <div class="flex flex-col">
-                                        @if ($game['price'] == 0)
+                                        @if ($game->price == 0)
                                         <span class="text-lg font-black text-green-500">Free</span>
                                         @else
                                         <span class="text-lg font-black text-miku-600 dark:text-miku-400 leading-none">
-                                            {{ number_format($game['price'], 0, ',', '.') }}đ
+                                            {{ number_format($game->price, 0, ',', '.') }}đ
                                         </span>
                                         @endif
                                     </div>
 
                                     <div class="flex items-center gap-2">
-                                        <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-miku-500 hover:text-white transition-all shadow-sm">
+                                        <button class="relative z-10 w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-miku-500 hover:text-white transition-all shadow-sm">
                                             <i class="fa-solid fa-cart-plus text-sm"></i>
                                         </button>
                                     </div>
@@ -109,7 +109,7 @@
                                 @foreach($categories as $cat)
                                 <label class="flex items-center gap-3 cursor-pointer group">
                                     <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-miku-500 focus:ring-miku-500">
-                                    <span class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-miku-500 transition-colors">{{ $cat['name'] }}</span>
+                                    <span class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-miku-500 transition-colors">{{ $cat->name }}</span>
                                 </label>
                                 @endforeach
                             </div>

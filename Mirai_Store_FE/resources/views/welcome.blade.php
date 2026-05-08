@@ -70,13 +70,13 @@
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                         @foreach ($recommendedGames as $recGame)
                         <div
-                            class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1">
+                            class="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1">
                             
                             <div class="relative h-40 overflow-hidden">
-                                <img src="{{ $recGame['image'] }}"
-                                    alt="{{ $recGame['name'] }}"
+                                <img src="{{ $recGame->image }}"
+                                    alt="{{ $recGame->name }}"
                                     class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                                @if ($recGame['price'] == 0)
+                                @if ($recGame->price == 0)
                                 <span
                                     class="absolute top-2 right-2 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">FREE</span>
                                 @endif
@@ -85,12 +85,12 @@
                             
                             <div class="p-4">
                                 <h3 class="font-bold text-gray-900 dark:text-white truncate mb-1"
-                                    title="{{ $recGame['name'] }}">
-                                    <a href="{{ route('game.show', $recGame['id']) }}">{{ $recGame['name'] }}</a>
+                                    title="{{ $recGame->name }}">
+                                    <a href="{{ route('game.show', $recGame->id) }}" class="after:absolute after:inset-0">{{ $recGame->name }}</a>
                                 </h3>
                                 <div class="flex justify-between items-center mt-2">
                                     <span class="text-sm font-bold text-miku-600 dark:text-miku-400">
-                                        {{ number_format($recGame['price'], 0, ',', '.') }}đ
+                                        {{ number_format($recGame->price, 0, ',', '.') }}đ
                                     </span>
                                 </div>
                             </div>
@@ -116,19 +116,19 @@
                 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
                     @foreach ($games as $game)
-                    <div
-                        class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col h-full">
+                        <div
+                            class="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col h-full">
 
                         
                         <div class="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
-                            <a href="{{ route('game.show', $game['id']) }}" class="block w-full h-full">
-                                <img src="{{ $game['image'] }}"
-                                    alt="{{ $game['name'] }}"
+                            <a href="{{ route('game.show', $game->id) }}" class="block w-full h-full">
+                                <img src="{{ $game->image }}"
+                                    alt="{{ $game->name }}"
                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out">
                             </a>
 
                             <div class="absolute top-2 right-2 flex flex-col items-end gap-1">
-                                @if ($game['price'] == 0)
+                                @if ($game->price == 0)
                                 <span
                                     class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded shadow animate-pulse">
                                     Miễn phí
@@ -142,27 +142,27 @@
                             
                             <h3
                                 class="text-base font-bold text-gray-900 dark:text-white leading-tight mb-2 line-clamp-2 hover:text-miku-600 dark:hover:text-miku-400 transition-colors">
-                                <a href="{{ route('game.show', $game['id']) }}">
-                                    {{ $game['name'] }}
+                                <a href="{{ route('game.show', $game->id) }}" class="after:absolute after:inset-0">
+                                    {{ $game->name }}
                                 </a>
                             </h3>
 
                             <div class="mb-4 text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2">
-                                <span>{{ $game['category'] ?? 'Game' }}</span>
+                                <span>{{ $game->category ?? 'Game' }}</span>
                             </div>
 
                             
                             <div class="mt-auto pt-3 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between">
                                 <div class="flex flex-col">
-                                    @if ($game['price'] == 0)
+                                    @if ($game->price == 0)
                                     <span class="text-lg font-bold text-green-500">Miễn phí</span>
                                     @else
-                                    <span class="text-lg font-black text-miku-600 dark:text-miku-400">{{ number_format($game['price'], 0, ',', '.') }}đ</span>
+                                    <span class="text-lg font-black text-miku-600 dark:text-miku-400">{{ number_format($game->price, 0, ',', '.') }}đ</span>
                                     @endif
                                 </div>
 
                                 <div class="flex items-center gap-2">
-                                    <button class="w-10 h-10 flex items-center justify-center rounded-full bg-miku-50 dark:bg-miku-900/30 text-miku-600 dark:text-miku-400 hover:bg-miku-500 hover:text-white transition-all">
+                                    <button class="relative z-10 w-10 h-10 flex items-center justify-center rounded-full bg-miku-50 dark:bg-miku-900/30 text-miku-600 dark:text-miku-400 hover:bg-miku-500 hover:text-white transition-all">
                                         <i class="fa-solid fa-cart-plus"></i>
                                     </button>
                                 </div>
