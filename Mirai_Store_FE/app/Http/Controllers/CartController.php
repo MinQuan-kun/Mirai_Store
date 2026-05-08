@@ -18,6 +18,7 @@ class CartController extends Controller
     
     public function index()
     {
+<<<<<<< Updated upstream
         
         if (!Session::has('cart_items')) {
             $this->initializeMockCart();
@@ -28,20 +29,65 @@ class CartController extends Controller
             $itemObj = (object)$item;
             if (isset($itemObj->game) && is_array($itemObj->game)) {
                 $itemObj->game = (object)$itemObj->game;
-            }
-            return $itemObj;
-        });
-        $total = $cartItems->sum('price_at_time');
+=======
+        try {
+            $response = $this->backend->get('Cart');
 
-        return view('cart.index', compact('cartItems', 'total'));
+            if ($response->successful()) {
+                $data = $response->json();
+                
+                // Map dữ liệu từ .NET API ({ items: [...], total: ... })
+                $cartItems = collect($data['items'] ?? [])->map(fn($item) => (object)[
+                    'id' => $item['id'],
+                    'game_id' => $item['gameId'],
+                    'price_at_time' => $item['priceAtTime'],
+                    'quantity' => $item['quantity'],
+                    'game' => (object)[
+                        'id' => $item['gameId'],
+                        'name' => $item['gameName'],
+                        'image' => $item['gameImage'],
+                        'publisher' => 'N/A' // .NET hiện chưa trả về publisher trong CartItemDto
+                    ]
+                ]);
+
+                $total = $data['total'] ?? 0;
+
+                return view('cart.index', compact('cartItems', 'total'));
+>>>>>>> Stashed changes
+            }
+
+            return view('cart.index', ['cartItems' => collect(), 'total' => 0])
+                ->with('error', 'Không thể lấy dữ liệu giỏ hàng.');
+
+        } catch (\Exception $e) {
+            return view('cart.index', ['cartItems' => collect(), 'total' => 0])
+                ->with('error', 'Lỗi kết nối: ' . $e->getMessage());
+        }
     }
 
     
     public function addToCart(Request $request)
     {
-        if (!Session::has('cart_items')) {
-            $this->initializeMockCart();
+        $request->validate([
+            'game_id' => 'required|string'
+        ]);
+
+        try {
+            $response = $this->backend->post('Cart/add', [
+                'gameId' => $request->game_id
+            ]);
+
+            if ($response->successful()) {
+                $data = $response->json();
+                return back()->with($data['status'] ?? 'success', $data['message']);
+            }
+
+            return back()->with('error', 'Không thể thêm vào giỏ hàng.');
+
+        } catch (\Exception $e) {
+            return back()->with('error', 'Lỗi kết nối: ' . $e->getMessage());
         }
+<<<<<<< Updated upstream
 
         $cart = Session::get('cart_items');
         
@@ -61,11 +107,14 @@ class CartController extends Controller
         Session::put('cart_items', $cart);
 
         return back()->with('success', 'Đã thêm game vào giỏ hàng!');
+=======
+>>>>>>> Stashed changes
     }
 
     
     public function remove($id)
     {
+<<<<<<< Updated upstream
         $cart = Session::get('cart_items', []);
         
         
@@ -73,12 +122,18 @@ class CartController extends Controller
             $itemId = is_object($item) ? $item->id : ($item['id'] ?? null);
             return $itemId != $id;
         });
+=======
+        try {
+            $response = $this->backend->delete("Cart/remove/{$id}");
+>>>>>>> Stashed changes
 
-        Session::put('cart_items', array_values($newCart));
+            if ($response->successful()) {
+                return back()->with('success', 'Đã xóa game khỏi giỏ hàng!');
+            }
 
-        return back()->with('success', 'Đã xóa game khỏi giỏ hàng!');
-    }
+            return back()->with('error', 'Không thể xóa sản phẩm.');
 
+<<<<<<< Updated upstream
     
     private function initializeMockCart()
     {
@@ -105,11 +160,26 @@ class CartController extends Controller
             ]
         ];
         Session::put('cart_items', $initialItems);
+=======
+        } catch (\Exception $e) {
+            return back()->with('error', 'Lỗi kết nối: ' . $e->getMessage());
+        }
+>>>>>>> Stashed changes
     }
 
     public function clear()
     {
-        Session::forget('cart_items');
-        return back()->with('success', 'Đã làm trống giỏ hàng!');
+        try {
+            $response = $this->backend->delete("Cart/clear");
+
+            if ($response->successful()) {
+                return back()->with('success', 'Đã làm trống giỏ hàng!');
+            }
+
+            return back()->with('error', 'Không thể làm trống giỏ hàng.');
+
+        } catch (\Exception $e) {
+            return back()->with('error', 'Lỗi kết nối: ' . $e->getMessage());
+        }
     }
 }

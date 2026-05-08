@@ -2,70 +2,71 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\BackendService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
 {
+    protected $backend;
+
+    public function __construct(BackendService $backend)
+    {
+        $this->backend = $backend;
+    }
+
     public function index()
     {
-        
-        $user = new \stdClass();
-        $user->balance = Session::get('user_balance', 5000000); 
+        try {
+            $response = $this->backend->get('orders/checkout-data');
 
-        
-        $cartItems = collect([
-            (object)[
-                'id' => 1,
-                'price_at_time' => 1290000,
-                'game' => (object)[
-                    'id' => 1,
-                    'name' => 'Black Myth: Wukong',
-                    'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681024/Game/673758fff46261230006323c_maxresdefault.jpg',
-                    'publisher' => 'Game Science'
-                ]
-            ],
-            (object)[
-                'id' => 2,
-                'price_at_time' => 990000,
-                'game' => (object)[
-                    'id' => 2,
-                    'name' => 'Elden Ring',
-                    'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681146/Game/67375979f46261230006323e_elden-ring-shadow-of-the-erdtree-02.jpg',
-                    'publisher' => 'FromSoftware'
-                ]
-            ]
-        ]);
+            if ($response->successful()) {
+                $data = $response->json()['data'];
+                
+                $user = (object)[
+                    'balance' => $data['userBalance']
+                ];
 
-        $total = $cartItems->sum('price_at_time');
+                $cartItems = collect($data['items'] ?? [])->map(fn($i) => (object)[
+                    'id' => $i['game']['id'],
+                    'price_at_time' => $i['priceAtTime'],
+                    'game' => (object)[
+                        'id' => $i['game']['id'],
+                        'name' => $i['game']['name'],
+                        'image' => $i['game']['image'],
+                        'publisher' => $i['game']['publisher'] ?? 'N/A'
+                    ]
+                ]);
 
-        return view('checkout.index', compact('user', 'cartItems', 'total'));
+                $total = $data['subtotal'];
+
+                return view('checkout.index', compact('user', 'cartItems', 'total'));
+            }
+
+            return redirect()->route('cart.index')->with('error', 'Không thể tải dữ liệu thanh toán.');
+
+        } catch (\Exception $e) {
+            return redirect()->route('cart.index')->with('error', 'Lỗi kết nối: ' . $e->getMessage());
+        }
     }
 
     public function process(Request $request)
     {
-        
-        return redirect()->route('home')->with('success', 'Thanh toán thành công! Game đã được thêm vào thư viện.');
+        // Chuyển hướng sang OrderController@checkout để xử lý thanh toán tập trung
+        return app(OrderController::class)->checkout($request);
     }
 
     public function validateDiscount(Request $request)
     {
-        $code = $request->code;
-        $total = $request->total;
-
-        if (strtoupper($code) === 'GAME10') {
-            $discount = $total * 0.1;
-            return response()->json([
-                'valid' => true,
-                'discount_amount' => $discount,
-                'final_total' => $total - $discount,
-                'message' => 'Áp dụng mã giảm giá 10% thành công!'
+        try {
+            $response = $this->backend->post('orders/validate-discount', [
+                'code' => $request->code,
+                'total' => $request->total
             ]);
-        }
 
-        return response()->json([
-            'valid' => false,
-            'message' => 'Mã giảm giá không hợp lệ hoặc đã hết hạn.'
-        ]);
+            return response()->json($response->json());
+        } catch (\Exception $e) {
+            return response()->json(['valid' => false, 'message' => 'Lỗi kết nối.']);
+        }
     }
 }

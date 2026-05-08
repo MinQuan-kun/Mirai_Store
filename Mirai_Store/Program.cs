@@ -1,40 +1,22 @@
 using Mirai_Store.Internal.Contants;
 using Mirai_Store.Internal.DataContext;
 using Mirai_Store.Internal.Helpers;
-using Mirai_Store.Internal.Services;
-using Mirai_Store.Internal.Services.Interface;
-using Mirai_Store.Internal.Repositories.Interface;
-using Mirai_Store.Internal.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+// Register Database Context and Helpers
 builder.Services.AddScoped<MongoDbContext>();
-
-
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IGameRepository, GameRepository>();
-builder.Services.AddScoped<ICartRepository, CartRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
-
-
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IGameService, GameService>();
-builder.Services.AddScoped<ICartService, CartService>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IDiscountService, DiscountService>();
-builder.Services.AddSingleton<JwtHelper>(); 
-
+builder.Services.AddSingleton<JwtHelper>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
+builder.Services.AddHttpClient();
 
-
+// Configure CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -45,7 +27,16 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowFrontend",
+        policy => {
+            policy.WithOrigins("http://localhost:5173", "http://localhost:8000") // Thêm cổng mặc định của Laravel
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
 
+// Configure JWT Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -65,19 +56,9 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddCors(options => {
-    options.AddPolicy("AllowFrontend",
-        policy => {
-            policy.WithOrigins("http://localhost:5173")
-                  .AllowAnyMethod()
-                  .AllowAnyHeader();
-        });
-});
-
 var app = builder.Build();
-app.UseCors("AllowFrontend");
 
-
+// Configure Middleware
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -93,10 +74,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-
+// Handle SPA routing
 app.MapFallbackToFile("/admin/{*path:nonfile}", "admin/index.html");
-
-
 app.MapFallbackToFile("{*path:nonfile}", "index.html");
 
 app.Run();

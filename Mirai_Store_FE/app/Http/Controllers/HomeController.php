@@ -2,104 +2,139 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\BackendService;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    protected $backend;
+
+    public function __construct(BackendService $backend)
+    {
+        $this->backend = $backend;
+    }
+
     public function index()
     {
-        
-        $games = collect([
-            (object)[
-                'id' => 1,
-                'name' => 'Genshin Impact',
-                'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681285/Game/67375a03496150f55b9e8306_Genshin-Impact-03.jpg',
-                'price' => 0,
-                'category' => 'Action RPG'
-            ],
-            (object)[
-                'id' => 2,
-                'name' => 'Black Myth: Wukong',
-                'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681024/Game/673758fff46261230006323c_maxresdefault.jpg',
-                'price' => 1290000,
-                'category' => 'Action'
-            ],
-            (object)[
-                'id' => 3,
-                'name' => 'Elden Ring',
-                'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681146/Game/67375979f46261230006323e_elden-ring-shadow-of-the-erdtree-02.jpg',
-                'price' => 990000,
-                'category' => 'Soulslike'
-            ]
-        ]);
+        try {
+            $response = $this->backend->get('games', [
+                'pageSize' => 12
+            ]);
 
-        $recommendedGames = $games->take(2);
+            if ($response->successful()) {
+                $data = $response->json();
+                
+                $games = collect($data['data'] ?? [])->map(fn($g) => (object)[
+                    'id' => $g['id'],
+                    'name' => $g['title'],
+                    'image' => $g['imageUrl'],
+                    'price' => $g['price'],
+                    'category' => $g['categoryName']
+                ]);
 
-        return view('welcome', compact('games', 'recommendedGames'));
+                $recommendedGames = $games->take(4);
+
+                return view('welcome', compact('games', 'recommendedGames'));
+            }
+
+            return view('welcome', ['games' => collect(), 'recommendedGames' => collect()]);
+
+        } catch (\Exception $e) {
+            return view('welcome', ['games' => collect(), 'recommendedGames' => collect()])
+                ->with('error', 'Lỗi kết nối Backend: ' . $e->getMessage());
+        }
     }
 
     public function shop(Request $request)
     {
-        $games = collect([
-            (object)[
-                'id' => 1,
-                'name' => 'Genshin Impact',
-                'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681285/Game/67375a03496150f55b9e8306_Genshin-Impact-03.jpg',
-                'price' => 0,
-                'category' => 'Action RPG'
-            ],
-            (object)[
-                'id' => 2,
-                'name' => 'Black Myth: Wukong',
-                'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681024/Game/673758fff46261230006323c_maxresdefault.jpg',
-                'price' => 1290000,
-                'category' => 'Action'
-            ],
-            (object)[
-                'id' => 3,
-                'name' => 'Elden Ring',
-                'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681146/Game/67375979f46261230006323e_elden-ring-shadow-of-the-erdtree-02.jpg',
-                'price' => 990000,
-                'category' => 'Soulslike'
-            ]
-        ]);
+        try {
+            $params = [
+                'search' => $request->search,
+                'category' => $request->category,
+                'minPrice' => $request->min_price,
+                'maxPrice' => $request->max_price,
+                'publisher' => $request->publisher,
+                'platform' => $request->platform,
+                'sort' => $request->sort,
+                'page' => $request->page ?? 1,
+                'pageSize' => 12
+            ];
 
-        $categories = collect([
-            (object)['id' => 1, 'name' => 'Action'],
-            (object)['id' => 2, 'name' => 'Adventure'],
-            (object)['id' => 3, 'name' => 'RPG']
-        ]);
+            $response = $this->backend->get('games', $params);
 
-        return view('shop.index', compact('games', 'categories'));
+            if ($response->successful()) {
+                $data = $response->json();
+                
+                $games = collect($data['data'] ?? [])->map(fn($g) => (object)[
+                    'id' => $g['id'],
+                    'name' => $g['title'],
+                    'image' => $g['imageUrl'],
+                    'price' => $g['price'],
+                    'category' => $g['categoryName']
+                ]);
+
+                $categories = collect([
+                    (object)['id' => 'action', 'name' => 'Hành động'],
+                    (object)['id' => 'rpg', 'name' => 'Nhập vai'],
+                    (object)['id' => 'adventure', 'name' => 'Phiêu lưu']
+                ]);
+
+                return view('shop.index', compact('games', 'categories'));
+            }
+
+            return view('shop.index', ['games' => collect(), 'categories' => collect()]);
+
+        } catch (\Exception $e) {
+            return view('shop.index', ['games' => collect(), 'categories' => collect()]);
+        }
     }
 
     public function show($id)
     {
-        $game = (object)[
-            'id' => $id,
-            'name' => 'Black Myth: Wukong',
-            'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681024/Game/673758fff46261230006323c_maxresdefault.jpg',
-            'price' => 1290000,
-            'publisher' => 'Game Science',
-            'release_date' => '20/08/2024',
-            'description' => "Black Myth: Wukong là một game nhập vai hành động bắt nguồn từ thần thoại Trung Hoa. Câu chuyện dựa trên Tây Du Ký, một trong Bốn tác phẩm kinh điển vĩ đại của văn học Trung Quốc. Bạn sẽ lên đường với tư cách là Người được định mệnh để dấn thân vào những thử thách và kỳ quan phía trước, để vén bức màn che giấu sự thật đằng sau huyền thoại về một vinh quang huy hoàng từ quá khứ.",
-        ];
+        try {
+            $response = $this->backend->get("games/{$id}");
 
-        $relatedGames = collect([
-            (object)[
-                'id' => '1',
-                'name' => 'Genshin Impact',
-                'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681285/Game/67375a03496150f55b9e8306_Genshin-Impact-03.jpg',
-                'price' => 0
-            ],
-            (object)[
-                'id' => '3',
-                'name' => 'Elden Ring',
-                'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681146/Game/67375979f46261230006323e_elden-ring-shadow-of-the-erdtree-02.jpg',
-                'price' => 990000
-            ]
-        ]);
+            if ($response->successful()) {
+                $g = $response->json()['data'];
+                
+                $game = (object)[
+                    'id' => $g['id'],
+                    'name' => $g['name'],
+                    'image' => $g['image'],
+                    'price' => $g['price'],
+                    'publisher' => $g['publisher'] ?? 'N/A',
+                    'release_date' => 'N/A',
+                    'description' => $g['description'] ?? '',
+                ];
 
-        return view('games.show', compact('game', 'relatedGames'));
+                $relatedResponse = $this->backend->get('games', ['pageSize' => 4]);
+                $relatedGames = collect($relatedResponse->json()['data'] ?? [])->map(fn($rg) => (object)[
+                    'id' => $rg['id'],
+                    'name' => $rg['title'],
+                    'image' => $rg['imageUrl'],
+                    'price' => $rg['price']
+                ]);
+
+                return view('games.show', compact('game', 'relatedGames'));
+            }
+
+            abort(404);
+
+        } catch (\Exception $e) {
+            abort(500, 'Lỗi kết nối Backend');
+        }
+    }
+
+    public function chatbotSend(Request $request)
+    {
+        try {
+            $response = $this->backend->post('chatbot/chat', [
+                'message' => $request->message
+            ]);
+
+            return response()->json($response->json());
+        } catch (\Exception $e) {
+            return response()->json(['reply' => 'Lỗi kết nối tới chatbot.']);
+        }
     }
 }

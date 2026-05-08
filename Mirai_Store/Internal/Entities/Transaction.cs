@@ -1,4 +1,4 @@
-﻿using MongoDB.Bson;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Mirai_Store.Internal.Entities
@@ -37,5 +37,8 @@ namespace Mirai_Store.Internal.Entities
 
         [BsonElement("metadata")]
         public object? Metadata { get; set; }
+
+        [BsonElement("created_at")]
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

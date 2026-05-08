@@ -1,4 +1,4 @@
-namespace Mirai_Store.Models.Order
+namespace Mirai_Store.Models
 {
     public class CheckoutRequest
     {
@@ -13,5 +13,12 @@ namespace Mirai_Store.Models.Order
         public string Status { get; set; } = null!;
         public string PaymentMethod { get; set; } = null!;
         public DateTime CreatedAt { get; set; }
+    }
+
+    public class CreateOrderRequest
+    {
+        public string UserId { get; set; } = null!;
+        public decimal TotalAmount { get; set; }
+        public string? DiscountCode { get; set; }
     }
 }
