@@ -1,61 +1,141 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\",
+  "WorkspaceRootPath": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\internal\\datacontext\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\datacontext\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\services\\discountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\services\\discountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\internal\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\models\\user\\userresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\user\\userresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\models\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\models\\auth\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\auth\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\models\\auth\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\auth\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\models\\order\\createorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\order\\createorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\internal\\services\\interface\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\services\\interface\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\internal\\services\\gameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\services\\gameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\services\\gameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\internal\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\controllers\\admin\\admingamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\controllers\\admin\\admingamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\game\\gameresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\game\\gameresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\game\\creategamerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\game\\creategamerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\services\\interface\\idiscountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\services\\interface\\idiscountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\common\\baseresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\common\\baseresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\category\\categoryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\category\\categoryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\services\\interface\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\services\\interface\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\controllers\\admin\\admindiscountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\controllers\\admin\\admindiscountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\controllers\\admin\\admincategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\controllers\\admin\\admincategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\services\\interface\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\services\\interface\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\repositories\\discountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\repositories\\discountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\repositories\\interface\\idiscountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\repositories\\interface\\idiscountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\repositories\\interface\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\repositories\\interface\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\discount\\discountresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\discount\\discountresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\discount\\discountrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\discount\\discountrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\category\\categoryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\category\\categoryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\repositories\\interface\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\repositories\\interface\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\category\\temp||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\category\\temp||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\datacontext\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\datacontext\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\user\\userresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\user\\userresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\auth\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\auth\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\auth\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\auth\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\models\\order\\createorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\models\\order\\createorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|e:\\microsoft_visual_studio\\projects\\mirai_store\\mirai_store\\internal\\repositories\\interface\\itransactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|c:\\users\\lenovo\\source\\repos\\mirai_store\\mirai_store\\internal\\repositories\\interface\\itransactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DBE2848-065C-5E7A-3253-D06D0271809A}|Mirai_Store\\Mirai_Store.csproj|solutionrelative:mirai_store\\internal\\repositories\\interface\\itransactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -66,15 +146,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 18,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
               "$type": "Bookmark",
@@ -93,156 +193,408 @@
               "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameResponse.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Game\\GameResponse.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Game\\GameResponse.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Game\\GameResponse.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Game\\GameResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T10:36:26.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CreateGameRequest.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Game\\CreateGameRequest.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Game\\CreateGameRequest.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Game\\CreateGameRequest.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Game\\CreateGameRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T10:35:31.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminGamesController.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Controllers\\Admin\\AdminGamesController.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Controllers\\Admin\\AdminGamesController.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Controllers\\Admin\\AdminGamesController.cs",
+              "RelativeToolTip": "Mirai_Store\\Controllers\\Admin\\AdminGamesController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwC8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T10:06:49.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AdminDiscountsController.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Controllers\\Admin\\AdminDiscountsController.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Controllers\\Admin\\AdminDiscountsController.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Controllers\\Admin\\AdminDiscountsController.cs",
+              "RelativeToolTip": "Mirai_Store\\Controllers\\Admin\\AdminDiscountsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T10:06:29.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AdminCategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Controllers\\Admin\\AdminCategoriesController.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Controllers\\Admin\\AdminCategoriesController.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Controllers\\Admin\\AdminCategoriesController.cs",
+              "RelativeToolTip": "Mirai_Store\\Controllers\\Admin\\AdminCategoriesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T10:05:11.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DiscountResponse.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Discount\\DiscountResponse.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Discount\\DiscountResponse.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Discount\\DiscountResponse.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Discount\\DiscountResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:56:04.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CategoryResponse.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Category\\CategoryResponse.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Category\\CategoryResponse.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Category\\CategoryResponse.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Category\\CategoryResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:54:46.998Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DiscountService.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\DiscountService.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Services\\DiscountService.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\DiscountService.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Services\\DiscountService.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAwEgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:44:25.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IDiscountService.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\Interface\\IDiscountService.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Services\\Interface\\IDiscountService.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\Interface\\IDiscountService.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Services\\Interface\\IDiscountService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:43:13.227Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CategoryService.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\CategoryService.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Services\\CategoryService.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\CategoryService.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Services\\CategoryService.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAwFAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:42:57.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ICategoryService.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\Interface\\ICategoryService.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Services\\Interface\\ICategoryService.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\Interface\\ICategoryService.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Services\\Interface\\ICategoryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:42:30.366Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DiscountRepository.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\DiscountRepository.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Repositories\\DiscountRepository.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\DiscountRepository.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Repositories\\DiscountRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:30:52.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IDiscountRepository.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\Interface\\IDiscountRepository.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Repositories\\Interface\\IDiscountRepository.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\Interface\\IDiscountRepository.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Repositories\\Interface\\IDiscountRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:30:02.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Repositories\\CategoryRepository.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\CategoryRepository.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Repositories\\CategoryRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:25:06.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ICategoryRepository.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\Interface\\ICategoryRepository.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Repositories\\Interface\\ICategoryRepository.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\Interface\\ICategoryRepository.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Repositories\\Interface\\ICategoryRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:24:01.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IOrderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\Interface\\IOrderRepository.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Repositories\\Interface\\IOrderRepository.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\Interface\\IOrderRepository.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Repositories\\Interface\\IOrderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:24:00.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "DiscountRequest.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Discount\\DiscountRequest.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Discount\\DiscountRequest.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Discount\\DiscountRequest.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Discount\\DiscountRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:22:52.278Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CategoryRequest.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Category\\CategoryRequest.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Category\\CategoryRequest.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Category\\CategoryRequest.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Category\\CategoryRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:20:48.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "temp",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Category\\temp",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Category\\temp",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Category\\temp",
+              "RelativeToolTip": "Mirai_Store\\Models\\Category\\temp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-05-08T09:20:16.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BaseResponse.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Common\\BaseResponse.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Common\\BaseResponse.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Common\\BaseResponse.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Common\\BaseResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T09:19:37.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "MongoDBContext.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\DataContext\\MongoDBContext.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\DataContext\\MongoDBContext.cs",
               "RelativeDocumentMoniker": "Mirai_Store\\Internal\\DataContext\\MongoDBContext.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\DataContext\\MongoDBContext.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\DataContext\\MongoDBContext.cs",
               "RelativeToolTip": "Mirai_Store\\Internal\\DataContext\\MongoDBContext.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAA3wCAAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwDQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-05T13:29:47.49Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 24,
               "Title": "User.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Entities\\User.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Entities\\User.cs",
               "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Entities\\User.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Entities\\User.cs",
               "RelativeToolTip": "Mirai_Store\\Internal\\Entities\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T13:29:23.651Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T13:29:23.651Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 25,
               "Title": "UserResponse.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\User\\UserResponse.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\User\\UserResponse.cs",
               "RelativeDocumentMoniker": "Mirai_Store\\Models\\User\\UserResponse.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\User\\UserResponse.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\User\\UserResponse.cs",
               "RelativeToolTip": "Mirai_Store\\Models\\User\\UserResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T13:29:14.337Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T13:29:14.337Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 30,
               "Title": "CreateOrderRequest.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Order\\CreateOrderRequest.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Order\\CreateOrderRequest.cs",
               "RelativeDocumentMoniker": "Mirai_Store\\Models\\Order\\CreateOrderRequest.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Order\\CreateOrderRequest.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Order\\CreateOrderRequest.cs",
               "RelativeToolTip": "Mirai_Store\\Models\\Order\\CreateOrderRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T11:19:56.643Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Program.cs",
-              "RelativeDocumentMoniker": "Mirai_Store\\Program.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Program.cs",
-              "RelativeToolTip": "Mirai_Store\\Program.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAYAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T11:14:27.427Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "GameService.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Services\\GameService.cs",
-              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Services\\GameService.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Services\\GameService.cs",
-              "RelativeToolTip": "Mirai_Store\\Internal\\Services\\GameService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T11:19:19.432Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Mirai_Store\\Controllers\\AuthController.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Mirai_Store\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAYwC0AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T11:13:07.153Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AuthResponse.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Auth\\AuthResponse.cs",
-              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Auth\\AuthResponse.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Auth\\AuthResponse.cs",
-              "RelativeToolTip": "Mirai_Store\\Models\\Auth\\AuthResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T11:14:04.822Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LoginRequest.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Auth\\LoginRequest.cs",
-              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Auth\\LoginRequest.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Auth\\LoginRequest.cs",
-              "RelativeToolTip": "Mirai_Store\\Models\\Auth\\LoginRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T11:20:58.977Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T11:19:56.643Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Program.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Program.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Program.cs",
+              "RelativeToolTip": "Mirai_Store\\Program.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAEYAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:14:27.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameService.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\GameService.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Services\\GameService.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\GameService.cs",
+              "RelativeToolTip": "Mirai_Store\\Internal\\Services\\GameService.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAuwIEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:19:19.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Mirai_Store\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwC0AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:13:07.153Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AuthResponse.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Auth\\AuthResponse.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Auth\\AuthResponse.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Auth\\AuthResponse.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Auth\\AuthResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:14:04.822Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Auth\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "Mirai_Store\\Models\\Auth\\LoginRequest.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Auth\\LoginRequest.cs",
+              "RelativeToolTip": "Mirai_Store\\Models\\Auth\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:20:58.977Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
               "Title": "RegisterRequest.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Auth\\RegisterRequest.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Auth\\RegisterRequest.cs",
               "RelativeDocumentMoniker": "Mirai_Store\\Models\\Auth\\RegisterRequest.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Models\\Auth\\RegisterRequest.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Models\\Auth\\RegisterRequest.cs",
               "RelativeToolTip": "Mirai_Store\\Models\\Auth\\RegisterRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T11:20:58.134Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T11:20:58.134Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "IGameService.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Services\\Interface\\IGameService.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\Interface\\IGameService.cs",
               "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Services\\Interface\\IGameService.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Services\\Interface\\IGameService.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\Interface\\IGameService.cs",
               "RelativeToolTip": "Mirai_Store\\Internal\\Services\\Interface\\IGameService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T11:19:21.505Z"
+              "WhenOpened": "2026-05-05T11:19:21.505Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 31,
               "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\appsettings.json",
               "RelativeDocumentMoniker": "Mirai_Store\\appsettings.json",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\appsettings.json",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\appsettings.json",
               "RelativeToolTip": "Mirai_Store\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -250,11 +602,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 32,
               "Title": "AuthService.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Services\\AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Services\\AuthService.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Services\\AuthService.cs",
               "RelativeToolTip": "Mirai_Store\\Internal\\Services\\AuthService.cs",
               "ViewState": "AgIAAD0AAAAAAAAAAAAnwEgAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -262,11 +614,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 33,
               "Title": "ITransactionRepository.cs",
-              "DocumentMoniker": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\Interface\\ITransactionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\Interface\\ITransactionRepository.cs",
               "RelativeDocumentMoniker": "Mirai_Store\\Internal\\Repositories\\Interface\\ITransactionRepository.cs",
-              "ToolTip": "E:\\Microsoft_Visual_Studio\\Projects\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\Interface\\ITransactionRepository.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\Mirai_Store\\Mirai_Store\\Internal\\Repositories\\Interface\\ITransactionRepository.cs",
               "RelativeToolTip": "Mirai_Store\\Internal\\Repositories\\Interface\\ITransactionRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
