@@ -1,4 +1,8 @@
 <x-shop-layout>
+    @php
+        $purchasedGameIds = $purchasedGameIds ?? [];
+        $isOwned = in_array((string) $game->id, array_map('strval', $purchasedGameIds), true);
+    @endphp
     <div class="bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-300 py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -73,7 +77,7 @@
 
                         
                         <div class="flex flex-col sm:flex-row gap-3 pt-6 border-t border-gray-100 dark:border-gray-700">
-                            @if($game->price > 0)
+                            @if($game->price > 0 && !$isOwned)
                                 <form action="{{ route('cart.add') }}" method="POST" class="flex-1">
                                     @csrf
                                     <input type="hidden" name="game_id" value="{{ $game->id }}">
@@ -84,17 +88,20 @@
                                     </button>
                                 </form>
                             @else
-                                <a href="#"
-                                    class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 px-6 rounded-xl text-center transition shadow-lg shadow-green-500/30 flex items-center justify-center gap-2 group">
+                                <a href="{{ $game->download_link ?? '#' }}" @if(empty($game->download_link)) aria-disabled="true" @endif
+                                    class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 px-6 rounded-xl text-center transition shadow-lg shadow-green-500/30 flex items-center justify-center gap-2 group {{ empty($game->download_link) ? 'pointer-events-none opacity-60' : '' }}">
                                     <i class="fa-solid fa-download group-hover:scale-110 transition"></i>
                                     Tải Game Miễn Phí
                                 </a>
                             @endif
 
-                            <button class="px-6 py-3 rounded-xl font-bold bg-white dark:bg-gray-700 text-pink-500 dark:text-pink-400 border-2 border-pink-500 dark:border-pink-400 hover:bg-pink-50 dark:hover:bg-gray-600 transition shadow-lg flex items-center justify-center gap-2 group">
-                                <i class="fa-regular fa-heart group-hover:scale-110 transition"></i>
-                                <span class="hidden sm:inline">Yêu thích</span>
-                            </button>
+                            <form action="{{ route('wishlist.add', $game->id) }}" method="POST" class="sm:w-auto w-full">
+                                @csrf
+                                <button type="submit" class="px-6 py-3 rounded-xl font-bold bg-white dark:bg-gray-700 text-pink-500 dark:text-pink-400 border-2 border-pink-500 dark:border-pink-400 hover:bg-pink-50 dark:hover:bg-gray-600 transition shadow-lg flex items-center justify-center gap-2 group w-full">
+                                    <i class="fa-regular fa-heart group-hover:scale-110 transition"></i>
+                                    <span class="hidden sm:inline">Yêu thích</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
 

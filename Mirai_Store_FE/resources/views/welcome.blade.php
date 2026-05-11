@@ -1,6 +1,8 @@
 <x-shop-layout>
     @php
         $wishlistGameIds = session('wishlist_ids', []);
+        $purchasedGameIds = $purchasedGameIds ?? [];
+        $ownedGameIds = array_map('strval', $purchasedGameIds);
     @endphp
     <div class="bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-300">
 
@@ -12,7 +14,7 @@
             <div class="mb-8 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg p-6"
                 x-data="searchAutocomplete()">
                 <div class="flex flex-col gap-4">
-                    <div class="relative">
+                    <form action="{{ route('shop.index') }}" method="GET" class="relative">
                         <input type="text" name="search" placeholder="🔍 Tìm kiếm game..."
                             value="{{ request('search') }}" @input="search($el.value)" @focus="open = true"
                             @keydown.escape="open = false"
@@ -35,7 +37,7 @@
                                 </a>
                             </template>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
 
@@ -162,9 +164,19 @@
                                 </div>
 
                                 <div class="flex items-center gap-2">
-                                    <button class="relative z-10 w-10 h-10 flex items-center justify-center rounded-full bg-miku-50 dark:bg-miku-900/30 text-miku-600 dark:text-miku-400 hover:bg-miku-500 hover:text-white transition-all">
-                                        <i class="fa-solid fa-cart-plus"></i>
-                                    </button>
+                                    @if ($game->price > 0 && !in_array((string) $game->id, $ownedGameIds, true))
+                                    <form action="{{ route('cart.add') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="game_id" value="{{ $game->id }}">
+                                        <button type="submit" class="relative z-10 w-10 h-10 flex items-center justify-center rounded-full bg-miku-50 dark:bg-miku-900/30 text-miku-600 dark:text-miku-400 hover:bg-miku-500 hover:text-white transition-all">
+                                            <i class="fa-solid fa-cart-plus"></i>
+                                        </button>
+                                    </form>
+                                    @else
+                                    <a href="{{ $game->download_link ?? route('game.show', $game->id) }}" class="relative z-10 w-10 h-10 flex items-center justify-center rounded-full bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 hover:bg-green-500 hover:text-white transition-all" title="Tải game">
+                                        <i class="fa-solid fa-download"></i>
+                                    </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

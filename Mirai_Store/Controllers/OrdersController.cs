@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Mirai_Store.Internal.DataContext;
 using Mirai_Store.Internal.Entities;
 using Mirai_Store.Models;
-using Mirai_Store.Models;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 
 namespace Mirai_Store.Controllers
 {
@@ -21,9 +22,19 @@ namespace Mirai_Store.Controllers
         private readonly IMongoCollection<Game> _gameCollection;
         private readonly IMongoCollection<Transaction> _transactionCollection;
         private readonly IMongoCollection<DiscountCode> _discountCollection;
+        private readonly MongoDbContext _dbContext;
+
+        private static readonly string[] DiscountCollectionCandidates =
+        {
+            "discountCodes",
+            "discountcodes",
+            "discount_codes",
+            "discounts"
+        };
 
         public OrdersController(MongoDbContext dbContext)
         {
+            _dbContext = dbContext;
             _orderCollection = dbContext.Orders;
             _orderItemCollection = dbContext.OrderItems;
             _cartCollection = dbContext.Carts;
@@ -89,20 +100,22 @@ namespace Mirai_Store.Controllers
             }
 
             double discountAmount = 0;
-            string? discountId = null;
-
             if (!string.IsNullOrEmpty(request.DiscountCode))
             {
-                var discount = await _discountCollection.Find(x => x.Code == request.DiscountCode.ToUpper()).FirstOrDefaultAsync();
-                if (discount != null && discount.ExpiresAt > DateTime.UtcNow)
-                {
-                    discountAmount = discount.Type == "percentage" ? (subtotal * discount.Value / 100) : discount.Value;
-                    discountId = discount.Id;
-                }
-                else
+                var resolved = await ResolveDiscountAsync(request.DiscountCode);
+
+                if (resolved == null)
                 {
                     return BadRequest(new { Success = false, Message = "Mã giảm giá không hợp lệ" });
                 }
+
+                var (isDiscountValid, invalidReason) = ValidateDiscountEligibility(resolved);
+                if (!isDiscountValid)
+                {
+                    return BadRequest(new { Success = false, Message = invalidReason });
+                }
+
+                discountAmount = CalculateDiscountAmount(subtotal, resolved);
             }
 
             double finalTotal = subtotal - discountAmount;
@@ -159,6 +172,294 @@ namespace Mirai_Store.Controllers
             return Ok(new { Success = true, Message = "Thanh toán thành công!", OrderId = order.Id });
         }
 
+        [HttpPost("validate-discount")]
+        public async Task<IActionResult> ValidateDiscount([FromBody] ValidateDiscountRequest request)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId)) return Unauthorized();
+
+            if (string.IsNullOrWhiteSpace(request.Code))
+            {
+                return Ok(new
+                {
+                    valid = false,
+                    message = "Mã giảm giá không được để trống.",
+                    discount_amount = 0,
+                    final_total = request.Total
+                });
+            }
+
+            var resolved = await ResolveDiscountAsync(request.Code);
+            if (resolved == null)
+            {
+                return Ok(new
+                {
+                    valid = false,
+                    message = "Mã giảm giá không hợp lệ.",
+                    discount_amount = 0,
+                    final_total = request.Total
+                });
+            }
+
+            var (isDiscountValid, invalidReason) = ValidateDiscountEligibility(resolved);
+            if (!isDiscountValid)
+            {
+                return Ok(new
+                {
+                    valid = false,
+                    message = invalidReason,
+                    discount_amount = 0,
+                    final_total = request.Total
+                });
+            }
+
+            var total = request.Total < 0 ? 0 : request.Total;
+            var discountAmount = CalculateDiscountAmount(total, resolved);
+            var finalTotal = total - discountAmount;
+
+            return Ok(new
+            {
+                valid = true,
+                message = $"Áp dụng mã {resolved.Code} thành công.",
+                discount_code = resolved.Code,
+                discount_amount = discountAmount,
+                final_total = finalTotal
+            });
+        }
+
+        private async Task<ResolvedDiscount?> ResolveDiscountAsync(string rawCode)
+        {
+            var normalizedCode = NormalizeDiscountCode(rawCode);
+            if (string.IsNullOrEmpty(normalizedCode))
+            {
+                return null;
+            }
+
+            var regex = new BsonRegularExpression($"^{Regex.Escape(normalizedCode)}$", "i");
+            var typedFilter = Builders<DiscountCode>.Filter.Regex(x => x.Code, regex);
+            var typedDiscount = await _discountCollection.Find(typedFilter).FirstOrDefaultAsync();
+
+            if (typedDiscount != null)
+            {
+                return new ResolvedDiscount
+                {
+                    Id = typedDiscount.Id,
+                    Code = NormalizeDiscountCode(typedDiscount.Code) ?? normalizedCode,
+                    Type = typedDiscount.Type,
+                    Value = typedDiscount.Value,
+                    ExpiresAt = typedDiscount.ExpiresAt,
+                    IsActive = typedDiscount.IsActive ?? true,
+                    UsageLimit = typedDiscount.UsageLimit,
+                    UsedCount = typedDiscount.UsedCount ?? 0
+                };
+            }
+
+            var bsonFilter = Builders<BsonDocument>.Filter.Regex("code", regex);
+            foreach (var collectionName in DiscountCollectionCandidates)
+            {
+                var collection = _dbContext.GetBsonCollection(collectionName);
+                var doc = await collection.Find(bsonFilter).FirstOrDefaultAsync();
+                if (doc == null)
+                {
+                    continue;
+                }
+
+                var code = NormalizeDiscountCode(GetString(doc, "code")) ?? normalizedCode;
+                var type = GetString(doc, "type") ?? "fixed";
+                var value = GetDouble(doc, "value") ?? 0;
+                var expiresAt = GetDateTime(doc, "expires_at") ?? DateTime.MinValue;
+                var isActive = GetBool(doc, "is_active") ?? true;
+                var usageLimit = GetInt(doc, "usage_limit");
+                var usedCount = GetInt(doc, "used_count") ?? 0;
+
+                return new ResolvedDiscount
+                {
+                    Id = doc.GetValue("_id", BsonNull.Value)?.ToString(),
+                    Code = code,
+                    Type = type,
+                    Value = value,
+                    ExpiresAt = expiresAt,
+                    IsActive = isActive,
+                    UsageLimit = usageLimit,
+                    UsedCount = usedCount
+                };
+            }
+
+            return null;
+        }
+
+        private static string? NormalizeDiscountCode(string? code)
+        {
+            if (string.IsNullOrWhiteSpace(code))
+            {
+                return null;
+            }
+
+            return code.Trim().ToUpperInvariant();
+        }
+
+        private static (bool IsValid, string InvalidReason) ValidateDiscountEligibility(ResolvedDiscount discount)
+        {
+            if (!discount.IsActive)
+            {
+                return (false, "Mã giảm giá đã bị vô hiệu hóa.");
+            }
+
+            if (discount.ExpiresAt <= DateTime.UtcNow)
+            {
+                return (false, "Mã giảm giá đã hết hạn.");
+            }
+
+            if (discount.UsageLimit.HasValue && discount.UsageLimit.Value >= 0 && discount.UsedCount >= discount.UsageLimit.Value)
+            {
+                return (false, "Mã giảm giá đã hết lượt sử dụng.");
+            }
+
+            return (true, string.Empty);
+        }
+
+        private static double CalculateDiscountAmount(double total, ResolvedDiscount discount)
+        {
+            var safeTotal = total < 0 ? 0 : total;
+            var type = discount.Type?.Trim().ToLowerInvariant();
+            var amount = type switch
+            {
+                "percentage" or "percent" => safeTotal * discount.Value / 100,
+                "fixed" => discount.Value,
+                _ => discount.Value
+            };
+
+            if (amount < 0)
+            {
+                return 0;
+            }
+
+            return amount > safeTotal ? safeTotal : amount;
+        }
+
+        private static string? GetString(BsonDocument doc, string field)
+        {
+            if (!doc.TryGetValue(field, out var value) || value.IsBsonNull)
+            {
+                return null;
+            }
+
+            return value.BsonType == BsonType.String ? value.AsString : value.ToString();
+        }
+
+        private static double? GetDouble(BsonDocument doc, string field)
+        {
+            if (!doc.TryGetValue(field, out var value) || value.IsBsonNull)
+            {
+                return null;
+            }
+
+            if (value.IsNumeric)
+            {
+                return value.ToDouble();
+            }
+
+            if (double.TryParse(value.ToString(), out var parsed))
+            {
+                return parsed;
+            }
+
+            return null;
+        }
+
+        private static int? GetInt(BsonDocument doc, string field)
+        {
+            if (!doc.TryGetValue(field, out var value) || value.IsBsonNull)
+            {
+                return null;
+            }
+
+            if (value.IsInt32)
+            {
+                return value.AsInt32;
+            }
+
+            if (value.IsInt64)
+            {
+                var asLong = value.AsInt64;
+                if (asLong > int.MaxValue)
+                {
+                    return int.MaxValue;
+                }
+
+                if (asLong < int.MinValue)
+                {
+                    return int.MinValue;
+                }
+
+                return (int)asLong;
+            }
+
+            if (int.TryParse(value.ToString(), out var parsed))
+            {
+                return parsed;
+            }
+
+            return null;
+        }
+
+        private static bool? GetBool(BsonDocument doc, string field)
+        {
+            if (!doc.TryGetValue(field, out var value) || value.IsBsonNull)
+            {
+                return null;
+            }
+
+            if (value.IsBoolean)
+            {
+                return value.AsBoolean;
+            }
+
+            if (bool.TryParse(value.ToString(), out var parsed))
+            {
+                return parsed;
+            }
+
+            if (int.TryParse(value.ToString(), out var numericBool))
+            {
+                return numericBool != 0;
+            }
+
+            return null;
+        }
+
+        private static DateTime? GetDateTime(BsonDocument doc, string field)
+        {
+            if (!doc.TryGetValue(field, out var value) || value.IsBsonNull)
+            {
+                return null;
+            }
+
+            if (value.BsonType == BsonType.DateTime)
+            {
+                return value.ToUniversalTime();
+            }
+
+            if (DateTime.TryParse(value.ToString(), out var parsed))
+            {
+                return parsed.Kind == DateTimeKind.Utc ? parsed : parsed.ToUniversalTime();
+            }
+
+            return null;
+        }
+
+        private class ResolvedDiscount
+        {
+            public string? Id { get; init; }
+            public string Code { get; init; } = string.Empty;
+            public string Type { get; init; } = "fixed";
+            public double Value { get; init; }
+            public DateTime ExpiresAt { get; init; }
+            public bool IsActive { get; init; } = true;
+            public int? UsageLimit { get; init; }
+            public int UsedCount { get; init; }
+        }
+
         [HttpGet("my-orders")]
         public async Task<IActionResult> MyOrders()
         {
@@ -204,5 +505,11 @@ namespace Mirai_Store.Controllers
 
             return Ok(new { Success = true, Data = new { Order = order, Items = itemsWithGames } });
         }
+    }
+
+    public class ValidateDiscountRequest
+    {
+        public string? Code { get; set; }
+        public double Total { get; set; }
     }
 }

@@ -147,7 +147,7 @@
                                      Đơn hàng của tôi
                                  </a>
 
-                                 <a href="#"
+                                <a href="{{ route('wishlist.index') }}"
                                      class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-miku-50 dark:hover:bg-gray-700 hover:text-miku-600 dark:hover:text-white transition-colors">
                                      <svg class="w-5 h-5 text-gray-400 group-hover:text-pink-500" fill="none"
                                          stroke="currentColor" viewBox="0 0 24 24">

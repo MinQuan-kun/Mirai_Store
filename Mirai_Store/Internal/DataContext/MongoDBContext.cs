@@ -35,6 +35,9 @@ namespace Mirai_Store.Internal.DataContext
         public IMongoCollection<Cart> Carts
             => _database.GetCollection<Cart>("carts");
 
+        public IMongoCollection<BsonDocument> GetBsonCollection(string collectionName)
+            => _database.GetCollection<BsonDocument>(collectionName);
+
 
         public async Task<bool> CheckConnectionAsync()
         {

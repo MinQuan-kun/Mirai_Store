@@ -80,6 +80,7 @@
                                 <i class="fa-solid fa-tag mr-1 text-miku-500"></i>Mã giảm giá
                             </label>
                             <input type="text" name="discount_code" id="discount_code"
+                                form="checkout-form"
                                 placeholder="Nhập mã giảm giá (VD: GAME10)"
                                 class="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-miku-500 focus:border-miku-500 transition uppercase">
                             <p id="discount-message" class="mt-2 text-xs text-gray-500 dark:text-gray-400">
@@ -117,11 +118,9 @@
                             </div>
                         </div>
 
-                        <form action="{{ route('checkout.process') }}" method="POST">
+                        <form id="checkout-form" action="{{ route('checkout.process') }}" method="POST">
                             @csrf
-                            <input type="hidden" name="discount_code" id="hidden_discount_code" value="">
-                            <button type="submit" @if($user->balance < $total) disabled @endif
-                                onclick="document.getElementById('hidden_discount_code').value = document.getElementById('discount_code').value"
+                            <button id="checkout-submit" type="submit" @if($user->balance < $total) disabled @endif
                                 class="w-full bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-bold py-4 px-6 rounded-xl transition shadow-lg disabled:opacity-50 disabled:cursor-not-allowed mb-3">
                                 <i class="fa-solid fa-check-circle mr-2"></i>
                                 Xác nhận thanh toán
@@ -149,7 +148,17 @@
     <script>
         let discountTimeout;
         const originalTotal = {{ $total }};
+        const userBalance = {{ $user->balance }};
         let currentDiscountAmount = 0;
+        let currentFinalTotal = originalTotal;
+
+        const checkoutForm = document.querySelector('form[action="{{ route('checkout.process') }}"]');
+        const checkoutButton = document.getElementById('checkout-submit');
+
+        function syncCheckoutButton(total) {
+            currentFinalTotal = Math.max(0, Number(total) || 0);
+            checkoutButton.disabled = userBalance < currentFinalTotal;
+        }
 
         document.getElementById('discount_code').addEventListener('input', function (e) {
             const code = e.target.value.trim();
@@ -190,28 +199,35 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    if (data.valid) {
-                        // Valid discount code
-                        currentDiscountAmount = data.discount_amount;
+                    const isValid = Boolean(data.valid ?? data.Valid);
+                    const message = data.message ?? data.Message ?? 'Mã giảm giá hợp lệ.';
+                    const discountAmount = Number(data.discount_amount ?? data.discountAmount ?? 0);
+                    const finalTotal = Number(data.final_total ?? data.finalTotal ?? originalTotal);
 
-                        messageDiv.innerHTML = '<i class="fa-solid fa-check-circle mr-1"></i> ' + data.message;
+                    if (isValid) {
+                        // Valid discount code
+                        currentDiscountAmount = discountAmount;
+                        syncCheckoutButton(finalTotal);
+
+                        messageDiv.innerHTML = '<i class="fa-solid fa-check-circle mr-1"></i> ' + message;
                         messageDiv.className = 'mt-2 text-sm text-green-600 dark:text-green-400 font-medium';
 
                         // Show discount breakdown
                         discountRow.classList.remove('hidden');
                         document.getElementById('discount-amount').textContent =
-                            '- ' + new Intl.NumberFormat('vi-VN').format(data.discount_amount) + ' VNĐ';
+                            '- ' + new Intl.NumberFormat('vi-VN').format(discountAmount) + ' VNĐ';
 
                         // Update final total
-                        finalTotalSpan.textContent = new Intl.NumberFormat('vi-VN').format(data.final_total) + ' VNĐ';
+                        finalTotalSpan.textContent = new Intl.NumberFormat('vi-VN').format(finalTotal) + ' VNĐ';
                         finalTotalSpan.classList.remove('text-brand-600');
                         finalTotalSpan.classList.add('text-green-600', 'dark:text-green-400');
 
                     } else {
                         // Invalid discount code
                         currentDiscountAmount = 0;
+                        syncCheckoutButton(originalTotal);
 
-                        messageDiv.innerHTML = '<i class="fa-solid fa-times-circle mr-1"></i> ' + data.message;
+                        messageDiv.innerHTML = '<i class="fa-solid fa-times-circle mr-1"></i> ' + (message || 'Mã giảm giá không hợp lệ');
                         messageDiv.className = 'mt-2 text-sm text-red-600 dark:text-red-400 font-medium';
 
                         resetDiscount();
@@ -231,6 +247,7 @@
             const messageDiv = document.getElementById('discount-message');
 
             currentDiscountAmount = 0;
+            syncCheckoutButton(originalTotal);
             discountRow.classList.add('hidden');
             finalTotalSpan.textContent = new Intl.NumberFormat('vi-VN').format(originalTotal) + ' VNĐ';
             finalTotalSpan.classList.remove('text-green-600', 'dark:text-green-400');
@@ -241,5 +258,7 @@
                 messageDiv.className = 'mt-2 text-xs text-gray-500 dark:text-gray-400';
             }
         }
+
+        syncCheckoutButton(originalTotal);
     </script>
 </x-shop-layout>

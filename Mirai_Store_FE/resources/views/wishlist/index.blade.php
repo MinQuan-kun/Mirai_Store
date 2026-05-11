@@ -1,4 +1,7 @@
 <x-shop-layout>
+    @php
+        $purchasedGameIds = $purchasedGameIds ?? [];
+    @endphp
     <div class="bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-300 py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -31,7 +34,7 @@
                                     </a>
                                     
                                     
-                                    <form action="{{ route('wishlist.remove', $item->id) }}" method="POST" class="absolute top-3 right-3">
+                                    <form action="{{ route('wishlist.remove', $item->game->id) }}" method="POST" class="absolute top-3 right-3">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" 
@@ -65,7 +68,7 @@
 
                                     
                                     <div class="space-y-2">
-                                        @if(Auth::user()->ownsGame($item->game->id))
+                                        @if(in_array((string) $item->game->id, array_map('strval', $purchasedGameIds), true))
                                             
                                             <a href="{{ $item->game->download_link }}" target="_blank"
                                                 class="block w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-2.5 px-4 rounded-lg text-center transition shadow-md">
@@ -83,8 +86,8 @@
                                                     </button>
                                                 </form>
                                             @else
-                                                <a href="{{ $item->game->download_link }}" target="_blank"
-                                                    class="block w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-2.5 px-4 rounded-lg text-center transition shadow-md">
+                                                <a href="{{ $item->game->download_link ?? '#' }}" target="_blank" @if(empty($item->game->download_link)) aria-disabled="true" @endif
+                                                    class="block w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-2.5 px-4 rounded-lg text-center transition shadow-md {{ empty($item->game->download_link) ? 'pointer-events-none opacity-60' : '' }}">
                                                     <i class="fa-solid fa-download mr-2"></i>Tải Game Miễn Phí
                                                 </a>
                                             @endif

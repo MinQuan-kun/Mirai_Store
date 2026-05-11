@@ -20,5 +20,17 @@ namespace Mirai_Store.Internal.Entities
 
         [BsonElement("expires_at")]
         public DateTime ExpiresAt { get; set; }
+
+        [BsonElement("is_active")]
+        [BsonIgnoreIfNull]
+        public bool? IsActive { get; set; }
+
+        [BsonElement("usage_limit")]
+        [BsonIgnoreIfNull]
+        public int? UsageLimit { get; set; }
+
+        [BsonElement("used_count")]
+        [BsonIgnoreIfNull]
+        public int? UsedCount { get; set; }
     }
 }

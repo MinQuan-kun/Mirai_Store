@@ -1,6 +1,8 @@
 <x-shop-layout>
     @php
         $wishlistGameIds = session('wishlist_ids', []);
+        $purchasedGameIds = $purchasedGameIds ?? [];
+        $ownedGameIds = array_map('strval', $purchasedGameIds);
     @endphp
     <div class="bg-gray-50 dark:bg-gray-900 min-h-screen py-8 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,9 +79,19 @@
                                     </div>
 
                                     <div class="flex items-center gap-2">
-                                        <button class="relative z-10 w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-miku-500 hover:text-white transition-all shadow-sm">
-                                            <i class="fa-solid fa-cart-plus text-sm"></i>
-                                        </button>
+                                        @if ($game->price > 0 && !in_array((string) $game->id, $ownedGameIds, true))
+                                        <form action="{{ route('cart.add') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="game_id" value="{{ $game->id }}">
+                                            <button type="submit" class="relative z-10 w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-miku-500 hover:text-white transition-all shadow-sm">
+                                                <i class="fa-solid fa-cart-plus text-sm"></i>
+                                            </button>
+                                        </form>
+                                        @else
+                                        <a href="{{ $game->download_link ?? route('game.show', $game->id) }}" class="relative z-10 w-10 h-10 flex items-center justify-center rounded-xl bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-300 hover:bg-green-500 hover:text-white transition-all shadow-sm" title="Tải game">
+                                            <i class="fa-solid fa-download text-sm"></i>
+                                        </a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -97,18 +109,20 @@
 
                 
                 <aside class="lg:col-span-1 order-1 lg:order-2">
-                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+                    <form action="{{ route('shop.index') }}" method="GET" class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
                         <div class="p-6 border-b border-gray-100 dark:border-gray-700">
                             <h2 class="text-lg font-bold text-gray-900 dark:text-white">Bộ lọc tìm kiếm</h2>
                         </div>
-                        
-                        
+
+                        <input type="hidden" name="search" value="{{ request('search') }}">
+                        <input type="hidden" name="sort" value="{{ request('sort') }}">
+
                         <div class="p-6">
                             <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Thể loại</h3>
                             <div class="space-y-2">
                                 @foreach($categories as $cat)
                                 <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-miku-500 focus:ring-miku-500">
+                                    <input type="radio" name="category" value="{{ $cat->id }}" @checked(request('category') === $cat->id) class="w-4 h-4 border-gray-300 text-miku-500 focus:ring-miku-500">
                                     <span class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-miku-500 transition-colors">{{ $cat->name }}</span>
                                 </label>
                                 @endforeach
@@ -119,12 +133,16 @@
                         <div class="p-6 border-t border-gray-100 dark:border-gray-700">
                             <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Khoảng giá</h3>
                             <div class="space-y-2">
-                                <button class="block w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400 transition-colors">Dưới 100K</button>
-                                <button class="block w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400 transition-colors">100K - 500K</button>
-                                <button class="block w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400 transition-colors">Trên 500K</button>
+                                <button type="submit" name="max_price" value="100000" class="block w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400 transition-colors">Dưới 100K</button>
+                                <button type="submit" name="min_price" value="100000" class="block w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400 transition-colors">100K - 500K</button>
+                                <button type="submit" name="min_price" value="500000" class="block w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400 transition-colors">Trên 500K</button>
                             </div>
                         </div>
-                    </div>
+                        <div class="p-6 border-t border-gray-100 dark:border-gray-700 flex gap-2">
+                            <button type="submit" class="flex-1 bg-miku-500 hover:bg-miku-600 text-white font-semibold py-2.5 rounded-lg transition">Áp dụng</button>
+                            <a href="{{ route('shop.index') }}" class="flex-1 text-center bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 font-semibold py-2.5 rounded-lg transition">Xóa</a>
+                        </div>
+                    </form>
                 </aside>
 
             </div>

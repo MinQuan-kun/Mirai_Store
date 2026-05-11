@@ -19,10 +19,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/shop', [HomeController::class, 'shop'])->name('shop.index');
 Route::get('/game/{id}', [HomeController::class, 'show'])->name('game.show');
 Route::view('/community', 'community.index')->name('community.index');
-Route::get('/gacha', [HomeController::class, 'index'])->name('gacha');
-Route::get('/orders', [HomeController::class, 'index'])->name('orders.index');
-Route::post('/chatbot/send', [HomeController::class, 'index'])->name('chatbot.send');
-Route::get('/wishlist', [HomeController::class, 'index'])->name('wishlist.index');
+Route::get('/gacha', [HomeController::class, 'gacha'])->name('gacha');
+Route::post('/chatbot/send', [HomeController::class, 'chatbotSend'])->name('chatbot.send');
 Route::get('/checkout', [App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout');
 Route::post('/checkout/process', [App\Http\Controllers\OrderController::class, 'checkout'])->name('checkout.process');
 Route::post('/checkout/validate-discount', [App\Http\Controllers\CheckoutController::class, 'validateDiscount'])->name('checkout.validate.discount');
@@ -33,6 +31,10 @@ Route::get('/orders/{id}', [App\Http\Controllers\OrderController::class, 'show']
 
 
 Route::middleware('auth.custom')->group(function () {
+    Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('wishlist.index');
+    Route::post('/wishlist/add/{gameId}', [HomeController::class, 'addToWishlist'])->name('wishlist.add');
+    Route::delete('/wishlist/remove/{gameId}', [HomeController::class, 'removeFromWishlist'])->name('wishlist.remove');
+
     Route::get('/wallet', [WalletController::class, 'index'])->name('wallet.index');
     Route::get('/wallet/deposit', [WalletController::class, 'showDeposit'])->name('wallet.deposit');
     Route::post('/wallet/deposit/test', [WalletController::class, 'depositTest'])->name('wallet.test.deposit');

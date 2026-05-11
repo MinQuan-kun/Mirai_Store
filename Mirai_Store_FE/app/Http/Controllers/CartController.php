@@ -18,7 +18,7 @@ class CartController extends Controller
     public function index()
     {
         try {
-            $response = $this->backend->get('Cart');
+            $response = $this->backend->get('cart');
 
             if ($response->successful()) {
                 $data = $response->json();
@@ -59,7 +59,7 @@ class CartController extends Controller
         ]);
 
         try {
-            $response = $this->backend->post('Cart/add', [
+            $response = $this->backend->post('cart/add', [
                 'gameId' => $request->game_id
             ]);
 
@@ -79,7 +79,7 @@ class CartController extends Controller
     public function remove($id)
     {
         try {
-            $response = $this->backend->delete("Cart/remove/{$id}");
+            $response = $this->backend->delete("cart/remove/{$id}");
 
             if ($response->successful()) {
                 return back()->with('success', 'Đã xóa game khỏi giỏ hàng!');
@@ -94,7 +94,7 @@ class CartController extends Controller
     public function clear()
     {
         try {
-            $response = $this->backend->delete("Cart/clear");
+            $response = $this->backend->delete("cart/clear");
 
             if ($response->successful()) {
                 return back()->with('success', 'Đã làm trống giỏ hàng!');

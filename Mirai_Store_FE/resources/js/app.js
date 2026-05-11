@@ -43,7 +43,7 @@ window.searchAutocomplete = function () {
 
             this.timeout = setTimeout(() => {
                 
-                fetch(`/api/games/search?q=${encodeURIComponent(query)}`)
+                fetch(`/api/games/search-suggestions?q=${encodeURIComponent(query)}`)
                     .then(res => res.json())
                     .then(data => {
                         this.suggestions = data;
