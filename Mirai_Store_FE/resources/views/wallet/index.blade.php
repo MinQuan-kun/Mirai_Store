@@ -59,7 +59,7 @@
                     </div>
                 </div>
 
-                @if($transactions->isEmpty())
+                @if($transactions->count() === 0)
                     <div class="text-center py-12">
                         <i class="fa-solid fa-receipt text-gray-300 dark:text-gray-600 text-6xl mb-4"></i>
                         <p class="text-gray-500 dark:text-gray-400 text-lg">Chưa có giao dịch nào</p>

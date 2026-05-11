@@ -18,42 +18,16 @@ class ProfileController extends Controller
 
     public function edit()
     {
-<<<<<<< Updated upstream
-        
-        $user = new \stdClass();
-        $user->name = Session::get('user_name', 'Người dùng');
-        $user->email = Session::get('user_email', 'user@example.com');
-        $user->avatar = null;
-        $user->balance = Session::get('user_balance', 0);
-        $user->id = Session::get('user_id', 1);
-
-        
-        $purchasedGames = collect([
-            (object)[
-                'name' => 'Black Myth: Wukong',
-                'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681024/Game/673758fff46261230006323c_maxresdefault.jpg',
-                'publisher' => 'Game Science',
-                'download_link' => '#'
-            ],
-            (object)[
-                'name' => 'Elden Ring',
-                'image' => 'https://res.cloudinary.com/davfujasj/image/upload/v1731681146/Game/67375979f46261230006323e_elden-ring-shadow-of-the-erdtree-02.jpg',
-                'publisher' => 'FromSoftware',
-                'download_link' => '#'
-            ]
-        ]);
-=======
         try {
             // Gọi sang Backend .NET để lấy dữ liệu profile thực tế
             $response = $this->backend->get('User/profile');
 
             if ($response->successful()) {
                 $profileData = $response->json();
->>>>>>> Stashed changes
 
                 // Map dữ liệu từ .NET sang định dạng mà View (Blade) đang mong đợi
                 $user = (object)($profileData['user'] ?? []);
-                
+
                 $purchasedGames = collect($profileData['purchasedGames'] ?? [])->map(fn($g) => (object)[
                     'id' => $g['id'],
                     'name' => $g['name'],
@@ -77,7 +51,6 @@ class ProfileController extends Controller
 
             // Nếu API lỗi (ví dụ chưa đăng nhập bên .NET), fallback về dữ liệu session hoặc báo lỗi
             return redirect()->route('login')->with('error', 'Vui lòng đăng nhập lại để xem hồ sơ.');
-
         } catch (\Exception $e) {
             return back()->with('error', 'Không thể kết nối tới máy chủ .NET: ' . $e->getMessage());
         }

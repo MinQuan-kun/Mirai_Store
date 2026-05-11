@@ -60,7 +60,7 @@
                             <div class="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
                                 <p class="text-sm text-gray-600 dark:text-gray-400">
                                     <i class="fa-solid fa-gamepad mr-1"></i>
-                                    {{ $order->items->count() }} game
+                                    {{ $order->items_count ?? 0 }} game
                                 </p>
 
                                 <a href="{{ route('orders.show', $order->id) }}"

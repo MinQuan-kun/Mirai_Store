@@ -3,6 +3,16 @@ namespace Mirai_Store.Models
     public class DepositRequest
     {
         public double Amount { get; set; }
+        public string PaymentMethod { get; set; } = "test_card";
+    }
+
+    public class PaymentCallbackRequest
+    {
+        public string ReferenceId { get; set; } = null!;
+        public bool Success { get; set; }
+        public double? Amount { get; set; }
+        public string? Message { get; set; }
+        public string? GatewayTransactionId { get; set; }
     }
 
     public class TransactionResponse

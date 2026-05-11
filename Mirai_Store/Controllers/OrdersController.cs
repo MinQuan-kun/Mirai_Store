@@ -120,7 +120,8 @@ namespace Mirai_Store.Controllers
                 OrderNumber = "ORD" + DateTime.Now.Ticks,
                 TotalAmount = finalTotal,
                 Status = "completed",
-                PaymentMethod = "wallet"
+                PaymentMethod = "wallet",
+                CreatedAt = DateTime.UtcNow
             };
             await _orderCollection.InsertOneAsync(order);
 
@@ -165,7 +166,24 @@ namespace Mirai_Store.Controllers
             if (string.IsNullOrEmpty(userId)) return Unauthorized();
 
             var orders = await _orderCollection.Find(x => x.UserId == userId).SortByDescending(x => x.Id).ToListAsync();
-            return Ok(new { Success = true, Data = orders });
+            var orderSummaries = new List<object>();
+
+            foreach (var order in orders)
+            {
+                var itemsCount = await _orderItemCollection.CountDocumentsAsync(x => x.OrderId == order.Id);
+
+                orderSummaries.Add(new
+                {
+                    order.Id,
+                    order.OrderNumber,
+                    order.TotalAmount,
+                    order.Status,
+                    CreatedAt = order.CreatedAt ?? DateTime.UtcNow,
+                    itemsCount
+                });
+            }
+
+            return Ok(new { Success = true, Data = orderSummaries });
         }
 
         [HttpGet("{id}")]

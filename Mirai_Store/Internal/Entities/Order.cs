@@ -24,5 +24,8 @@ namespace Mirai_Store.Internal.Entities
 
         [BsonElement("payment_method")]
         public string PaymentMethod { get; set; } = "wallet";
+
+        [BsonElement("created_at")]
+        public DateTime? CreatedAt { get; set; }
     }
 }

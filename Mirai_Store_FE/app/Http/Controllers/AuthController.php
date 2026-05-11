@@ -43,6 +43,9 @@ class AuthController extends Controller
                 if (isset($data['token'])) {
                     Session::put('auth_token', $data['token']);
                     Session::put('user', $data['user'] ?? null);
+                    Session::put('user_name', $data['user']['name'] ?? $data['user']['Name'] ?? $request->email);
+                    Session::put('user_email', $data['user']['email'] ?? $data['user']['Email'] ?? $request->email);
+                    Session::put('user_balance', $data['user']['balance'] ?? $data['user']['Balance'] ?? 0);
                     
                     return redirect()->intended('/')->with('success', 'Đăng nhập thành công!');
                 }

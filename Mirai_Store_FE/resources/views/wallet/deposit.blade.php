@@ -47,7 +47,7 @@
                                     <p class="font-bold text-gray-900 dark:text-white">MoMo</p>
                                     <p class="text-xs text-gray-500 dark:text-gray-400 text-center">Thanh toán bằng VNĐ
                                     </p>
-                                    <span class="text-xs text-red-500">(Sandbox không khả dụng)</span>
+                                    <span class="text-xs text-green-500">(Sandbox khả dụng)</span>
                                 </div>
                             </div>
                         </label>
