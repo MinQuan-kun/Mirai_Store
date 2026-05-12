@@ -1,0 +1,47 @@
+services:
+  # 1. Backend Service (ASP.NET Core)
+  - type: web
+    name: mirai-backend
+    env: docker
+    rootDir: Mirai_Store
+    plan: free
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://+:5185
+      - key: DB_URI
+        sync: false # User should set this in Render UI
+      - key: GEMINI_API_KEY
+        sync: false # User should set this in Render UI
+
+  # 2. Frontend Service (Laravel)
+  - type: web
+    name: mirai-frontend
+    env: docker
+    rootDir: Mirai_Store_FE
+    plan: free
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        sync: false # User should set this in Render UI
+      - key: APP_URL
+        fromService:
+          name: mirai-frontend
+          type: web
+          property: host
+      - key: BACKEND_URL
+        value: http://mirai-backend:5185/api # Internal URL for PHP to Backend
+      - key: VITE_BACKEND_URL
+        fromService:
+          name: mirai-backend
+          type: web
+          property: host
+          suffix: /api # Public URL for JS/Chatbot to Backend
+      - key: DB_URI
+        sync: false # User should set this in Render UI
+      - key: GEMINI_API_KEY
+        sync: false # User should set this in Render UI
