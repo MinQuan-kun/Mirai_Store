@@ -31,8 +31,8 @@ WORKDIR /var/www/html
 COPY . .
 
 # 6. Cài đặt Dependencies (PHP & JS)
-# Lưu ý: Chạy npm build để tạo assets cho production
-RUN composer install --optimize-autoloader --no-scripts \
+# Chạy composer update thay vì install vì máy user không có PHP để cập nhật lock file
+RUN composer update --optimize-autoloader --no-interaction \
     && npm install \
     && npm run build
 

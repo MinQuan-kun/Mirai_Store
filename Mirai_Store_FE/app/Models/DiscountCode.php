@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use MongoDB\\Laravel\\Eloquent\\Model;
 use Carbon\Carbon;
 
 class DiscountCode extends Model
