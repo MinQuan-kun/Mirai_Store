@@ -77,7 +77,8 @@ namespace Mirai_Store.Controllers
                 Message = "Đăng nhập thành công.",
                 Token = token,
                 Name = user.Name,
-                Email = user.Email
+                Email = user.Email,
+                User = user
             });
         }
     }

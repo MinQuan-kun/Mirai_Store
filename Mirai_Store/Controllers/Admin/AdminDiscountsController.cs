@@ -30,10 +30,34 @@ namespace Mirai_Store.Controllers.Admin
                 Code = e.Code,
                 Type = e.Type,
                 Value = e.Value,
-                ExpiresAt = e.ExpiresAt
+                ExpiresAt = e.ExpiresAt,
+                IsActive = e.IsActive ?? true,
+                UsageLimit = e.UsageLimit,
+                UsedCount = e.UsedCount
             }).ToList();
 
             return Ok(new BaseResponse { Success = true, Data = responseDtos });
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            var entity = await _discountCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            if (entity == null) return NotFound(new BaseResponse { Success = false, Message = "Không tìm thấy." });
+
+            var response = new DiscountResponse
+            {
+                Id = entity.Id!,
+                Code = entity.Code,
+                Type = entity.Type,
+                Value = entity.Value,
+                ExpiresAt = entity.ExpiresAt,
+                IsActive = entity.IsActive ?? true,
+                UsageLimit = entity.UsageLimit,
+                UsedCount = entity.UsedCount
+            };
+
+            return Ok(new BaseResponse { Success = true, Data = response });
         }
 
         [HttpPost]
@@ -51,7 +75,10 @@ namespace Mirai_Store.Controllers.Admin
                 Code = code,
                 Type = request.Type,
                 Value = request.Value,
-                ExpiresAt = request.ExpiresAt
+                ExpiresAt = request.ExpiresAt,
+                IsActive = request.IsActive,
+                UsageLimit = request.UsageLimit,
+                UsedCount = 0
             };
 
             await _discountCollection.InsertOneAsync(newEntity);
@@ -70,6 +97,9 @@ namespace Mirai_Store.Controllers.Admin
             entity.Type = request.Type;
             entity.Value = request.Value;
             entity.ExpiresAt = request.ExpiresAt;
+            entity.IsActive = request.IsActive;
+            entity.UsageLimit = request.UsageLimit;
+            entity.UsedCount = entity.UsedCount ?? 0;
 
             await _discountCollection.ReplaceOneAsync(x => x.Id == id, entity);
             return Ok(new BaseResponse { Success = true, Message = "Cập nhật thành công!" });

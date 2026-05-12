@@ -27,7 +27,7 @@ namespace Mirai_Store.Internal.DataContext
         public IMongoCollection<OrderItem> OrderItems
             => _database.GetCollection<OrderItem>("orderItems");
         public IMongoCollection<DiscountCode> DiscountCodes
-            => _database.GetCollection<DiscountCode>("discountCodes");
+            => _database.GetCollection<DiscountCode>("discount_codes");
         public IMongoCollection<Transaction> Transactions
             => _database.GetCollection<Transaction>("transactions");
         public IMongoCollection<Wishlist> Wishlists

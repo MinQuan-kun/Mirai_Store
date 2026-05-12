@@ -46,6 +46,9 @@ class AuthController extends Controller
                     Session::put('user_name', $data['user']['name'] ?? $data['user']['Name'] ?? $request->email);
                     Session::put('user_email', $data['user']['email'] ?? $data['user']['Email'] ?? $request->email);
                     Session::put('user_balance', $data['user']['balance'] ?? $data['user']['Balance'] ?? 0);
+                        // store role for quick access in views
+                        $roleVal = $data['user']['role'] ?? $data['user']['Role'] ?? ($data['user']['roles'] ?? null);
+                        Session::put('user_role', $roleVal);
                     
                     return redirect()->intended('/')->with('success', 'Đăng nhập thành công!');
                 }

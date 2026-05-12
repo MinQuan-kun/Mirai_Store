@@ -29,6 +29,8 @@ namespace Mirai_Store.Models
         public string Type { get; set; } = "percent";
         public double Value { get; set; }
         public DateTime ExpiresAt { get; set; }
+        public bool IsActive { get; set; } = true;
+        public int? UsageLimit { get; set; }
     }
 
     public class DiscountResponse
@@ -39,5 +41,7 @@ namespace Mirai_Store.Models
         public double Value { get; set; }
         public bool IsActive { get; set; }
         public DateTime ExpiresAt { get; set; }
+        public int? UsageLimit { get; set; }
+        public int? UsedCount { get; set; }
     }
 }

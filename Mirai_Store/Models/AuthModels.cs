@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
+using Mirai_Store.Internal.Entities;
+
 namespace Mirai_Store.Models
 {
     public class LoginRequest
@@ -32,5 +34,6 @@ namespace Mirai_Store.Models
         public string? Token { get; set; }
         public string? Name { get; set; }
         public string? Email { get; set; }
+        public User? User { get; set; }
     }
 }

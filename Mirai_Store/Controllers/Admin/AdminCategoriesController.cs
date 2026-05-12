@@ -38,6 +38,24 @@ namespace Mirai_Store.Controllers.Admin
             return Ok(new BaseResponse { Success = true, Data = responseDtos });
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            var entity = await _categoryCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            if (entity == null) return NotFound(new BaseResponse { Success = false, Message = "Không tìm thấy danh mục." });
+
+            var dto = new CategoryResponse
+            {
+                Id = entity.Id!,
+                Name = entity.Name,
+                Slug = entity.Slug,
+                Description = entity.Description,
+                IsActive = entity.IsActive
+            };
+
+            return Ok(new BaseResponse { Success = true, Data = dto });
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CategoryRequest request)
         {

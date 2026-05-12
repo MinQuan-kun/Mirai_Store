@@ -7,6 +7,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\WalletController;
+use App\Http\Controllers\Admin\GameAdminController;
+use App\Services\BackendService;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -54,4 +56,51 @@ Route::middleware('auth.custom')->group(function () {
     Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
     Route::get('/cart/remove/{id}', [CartController::class, 'remove']); 
     Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+
+    // Admin FE routes
+    Route::prefix('admin')->group(function () {
+        Route::get('/', function () {
+            $backend = app(BackendService::class);
+
+            $gamesResponse = $backend->get('admin/games');
+            $categoriesResponse = $backend->get('admin/categories');
+            $discountsResponse = $backend->get('admin/discounts');
+
+            $games = $gamesResponse->ok() ? ($gamesResponse->json('data') ?? []) : [];
+            $categories = $categoriesResponse->ok() ? ($categoriesResponse->json('data') ?? []) : [];
+            $discounts = $discountsResponse->ok() ? ($discountsResponse->json('data') ?? []) : [];
+
+            $stats = [
+                'games' => count($games),
+                'categories' => count($categories),
+                'discounts' => count($discounts),
+            ];
+
+            return view('admin.dashboard', compact('stats'));
+        })->name('admin.dashboard');
+
+        Route::get('/games', [GameAdminController::class, 'index'])->name('admin.games.index');
+        Route::get('/games/create', [GameAdminController::class, 'create'])->name('admin.games.create');
+        Route::post('/games', [GameAdminController::class, 'store'])->name('admin.games.store');
+        Route::get('/games/{id}/edit', [GameAdminController::class, 'edit'])->name('admin.games.edit');
+        Route::put('/games/{id}', [GameAdminController::class, 'update'])->name('admin.games.update');
+        Route::delete('/games/{id}', [GameAdminController::class, 'destroy'])->name('admin.games.destroy');
+        Route::patch('/games/{id}/toggle-status', [GameAdminController::class, 'toggleStatus'])->name('admin.games.toggle-status');
+
+        Route::get('/categories', [App\Http\Controllers\Admin\CategoryAdminController::class, 'index'])->name('admin.categories.index');
+        Route::get('/categories/create', [App\Http\Controllers\Admin\CategoryAdminController::class, 'create'])->name('admin.categories.create');
+        Route::post('/categories', [App\Http\Controllers\Admin\CategoryAdminController::class, 'store'])->name('admin.categories.store');
+        Route::get('/categories/{id}/edit', [App\Http\Controllers\Admin\CategoryAdminController::class, 'edit'])->name('admin.categories.edit');
+        Route::put('/categories/{id}', [App\Http\Controllers\Admin\CategoryAdminController::class, 'update'])->name('admin.categories.update');
+        Route::delete('/categories/{id}', [App\Http\Controllers\Admin\CategoryAdminController::class, 'destroy'])->name('admin.categories.destroy');
+
+        Route::get('/discounts', [App\Http\Controllers\Admin\DiscountAdminController::class, 'index'])->name('admin.discounts.index');
+        Route::get('/discounts/create', [App\Http\Controllers\Admin\DiscountAdminController::class, 'create'])->name('admin.discounts.create');
+        Route::post('/discounts', [App\Http\Controllers\Admin\DiscountAdminController::class, 'store'])->name('admin.discounts.store');
+        Route::get('/discounts/{id}/edit', [App\Http\Controllers\Admin\DiscountAdminController::class, 'edit'])->name('admin.discounts.edit');
+        Route::put('/discounts/{id}', [App\Http\Controllers\Admin\DiscountAdminController::class, 'update'])->name('admin.discounts.update');
+        Route::delete('/discounts/{id}', [App\Http\Controllers\Admin\DiscountAdminController::class, 'destroy'])->name('admin.discounts.destroy');
+
+        Route::get('/users', fn () => view('admin.users.index'))->name('admin.users.index');
+    });
 });

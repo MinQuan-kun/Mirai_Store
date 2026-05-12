@@ -3,7 +3,7 @@
     <!-- SIDEBAR HEADER -->
     <div :class="sidebarToggle ? 'justify-center' : 'justify-between'"
         class="flex items-center gap-2 pt-8 sidebar-header pb-7">
-        <a href="/dashboard">
+            <a href="{{ route('admin.dashboard') }}">
             <span class="logo" :class="sidebarToggle ? 'hidden' : ''">
                 <img class="dark:hidden" src="{{ asset('tailadmin/src/images/logo/logo.svg') }}" alt="Logo" />
                 <img class="hidden dark:block" src="{{ asset('tailadmin/src/images/logo/logo-dark.svg') }}"
@@ -38,12 +38,12 @@
                 <ul class="flex flex-col gap-4 mb-6">
 
                     <li>
-                        <a href="{{ route('dashboard') }}" class="menu-item group"
-                            :class="window.location.pathname.startsWith('/dashboard') ? 'menu-item-active' :
+                        <a href="{{ route('admin.dashboard') }}" class="menu-item group"
+                            :class="window.location.pathname.startsWith('/admin') ? 'menu-item-active' :
                                 'menu-item-inactive'">
 
                             <svg class="group-hover:text-white"
-                                :class="window.location.pathname.startsWith('/dashboard') ? 'menu-item-icon-active' :
+                                :class="window.location.pathname.startsWith('/admin') ? 'menu-item-icon-active' :
                                     'menu-item-icon-inactive'"
                                 width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

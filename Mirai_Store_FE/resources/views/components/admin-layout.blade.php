@@ -85,13 +85,48 @@
                         <div x-data="{ open: false }" class="relative">
                             <button @click="open = !open"
                                 class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                                {{ Auth::user()->name }}
+                                {{ optional(Auth::user())->name ?? session('user_name', session('user.email', 'Tài khoản')) }}
                                 <i class="fa-solid fa-chevron-down text-xs"></i>
                             </button>
+
+                            @php
+                                $feUser = null;
+                                if (Auth::check()) {
+                                    $feUser = Auth::user();
+                                } elseif (session('user')) {
+                                    $feUser = session('user');
+                                }
+
+                                $isAdmin = false;
+                                if ($feUser) {
+                                    // try multiple shapes: object or array
+                                    $roles = null;
+                                    if (is_array($feUser)) {
+                                        $roles = $feUser['roles'] ?? $feUser['role'] ?? $feUser['Role'] ?? null;
+                                    } else {
+                                        $roles = $feUser->roles ?? $feUser->role ?? $feUser->Role ?? null;
+                                    }
+
+                                    if (is_array($roles)) {
+                                        $isAdmin = in_array('admin', array_map('strtolower', $roles));
+                                    } elseif (is_string($roles)) {
+                                        $isAdmin = stripos($roles, 'admin') !== false || strtolower($roles) === 'admin';
+                                    } else {
+                                        $isAdmin = ($feUser->is_admin ?? $feUser['is_admin'] ?? $feUser['isAdmin'] ?? false);
+                                    }
+                                }
+                            @endphp
 
                             <div x-show="open" @click.outside="open = false" x-transition
                                 class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1 z-50"
                                 style="display: none;">
+                                @if($isAdmin)
+                                    <a href="{{ route('admin.dashboard') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        Admin Panel
+                                    </a>
+                                @endif
+
                                 <a href="{{ route('profile.edit') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
                                     Profile

@@ -41,6 +41,27 @@ namespace Mirai_Store.Controllers.Admin
             return Ok(new BaseResponse { Success = true, Data = responseData });
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            var game = await _gameCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            if (game == null)
+                return NotFound(new BaseResponse { Success = false, Message = "Không tìm thấy game" });
+
+            var response = new GameEditResponse
+            {
+                Id = game.Id!,
+                Title = game.Name,
+                Description = game.Description ?? string.Empty,
+                Price = (decimal)game.Price,
+                ImageUrl = game.Image,
+                CategoryId = game.CategoryIds.FirstOrDefault(),
+                IsActive = game.IsActive
+            };
+
+            return Ok(new BaseResponse { Success = true, Data = response });
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateGame([FromForm] CreateGameRequest request)
         {

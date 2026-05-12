@@ -126,7 +126,43 @@
                                 </p>
                             </div>
 
-                             <div class="py-1">
+                            @php
+                                $feUser = session('user') ?? null;
+                                $isAdmin = false;
+                                if ($feUser) {
+                                    if (is_array($feUser)) {
+                                        $roleVal = $feUser['role'] ?? $feUser['Role'] ?? null;
+                                    } else {
+                                        $roleVal = $feUser->role ?? $feUser->Role ?? null;
+                                    }
+                                    if (is_string($roleVal)) {
+                                        $isAdmin = stripos($roleVal, 'admin') !== false || strtolower($roleVal) === 'admin';
+                                    }
+                                }
+
+                                // fallback: explicit session key set during login
+                                if (!$isAdmin && session()->has('user_role')) {
+                                    $sv = session('user_role');
+                                    if (is_string($sv)) {
+                                        $isAdmin = stripos($sv, 'admin') !== false || strtolower($sv) === 'admin';
+                                    } elseif (is_array($sv)) {
+                                        $isAdmin = in_array('admin', array_map('strtolower', $sv));
+                                    }
+                                }
+                            @endphp
+
+                            <div class="py-1">
+                                @if($isAdmin)
+                                    <a href="{{ route('admin.dashboard') }}"
+                                        class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-miku-50 dark:hover:bg-gray-700 hover:text-miku-600 dark:hover:text-white transition-colors">
+                                        <svg class="w-5 h-5 text-gray-400 group-hover:text-miku-500" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 7h18M3 12h18M3 17h18"></path>
+                                        </svg>
+                                        Admin Panel
+                                    </a>
+                                @endif
                                 <a href="{{ route('profile.edit') }}"
                                     class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-miku-50 dark:hover:bg-gray-700 hover:text-miku-600 dark:hover:text-white transition-colors">
                                      <svg class="w-5 h-5 text-gray-400 group-hover:text-miku-500" fill="none"
