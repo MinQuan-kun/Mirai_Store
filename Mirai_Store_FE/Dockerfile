@@ -31,8 +31,9 @@ WORKDIR /var/www/html
 COPY . .
 
 # 6. Cài đặt Dependencies (PHP & JS)
-# Chạy composer update thay vì install vì máy user không có PHP để cập nhật lock file
-RUN composer update --optimize-autoloader --no-interaction -W \
+# Xóa lock file để tránh xung đột phiên bản khi update trên Render
+RUN rm -f composer.lock \
+    && composer update --optimize-autoloader --no-interaction -W \
     && npm install \
     && npm run build
 
