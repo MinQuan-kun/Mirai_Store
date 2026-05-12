@@ -12,6 +12,32 @@ use App\Services\BackendService;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/debug', function () {
+    $results = [];
+
+    // Check PHP extensions
+    $results['php_version'] = PHP_VERSION;
+    $results['mongodb_extension'] = extension_loaded('mongodb') ? 'Loaded' : 'NOT LOADED';
+
+    // Check DB Connection
+    try {
+        $db = \DB::connection()->getPdo();
+        $results['db_connection'] = 'Success (SQL)';
+    } catch (\Exception $e) {
+        $results['db_connection_error'] = $e->getMessage();
+    }
+
+    // Check MongoDB Connection specifically
+    try {
+        $mongo = \DB::connection('mongodb')->getMongoClient();
+        $results['mongodb_connection'] = 'Success';
+    } catch (\Exception $e) {
+        $results['mongodb_error'] = $e->getMessage();
+    }
+
+    return response()->json($results);
+});
+
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
@@ -47,14 +73,14 @@ Route::middleware('auth.custom')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 
-    
+
     Route::get('/user/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/user/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/profile/avatar', [App\Http\Controllers\ProfileController::class, 'updateAvatar'])->name('profile.avatar');
     Route::delete('/user/profile', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
-    Route::get('/cart/remove/{id}', [CartController::class, 'remove']); 
+    Route::get('/cart/remove/{id}', [CartController::class, 'remove']);
     Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
     // Admin FE routes
