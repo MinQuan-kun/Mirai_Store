@@ -17,7 +17,9 @@ RUN apt-get update && apt-get install -y \
     && apt-get install -y nodejs
 
 # 2. Cài đặt các extension PHP cần thiết cho Laravel
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
+    && pecl install mongodb \
+    && docker-php-ext-enable mongodb
 
 # 3. Cài đặt Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
