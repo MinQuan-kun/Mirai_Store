@@ -14,7 +14,6 @@ namespace Mirai_Store.Internal.DataContext
             var connectionString = DatabaseConst.ConnectionString;
             var client = new MongoClient(connectionString);
             
-            // Lấy Database Name từ Connection String (phần sau dấu / và trước dấu ?)
             var mongoUrl = new MongoUrl(connectionString);
             var databaseName = mongoUrl.DatabaseName ?? DatabaseConst.DatabaseName;
             
