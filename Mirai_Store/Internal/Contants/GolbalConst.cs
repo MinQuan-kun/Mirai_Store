@@ -5,7 +5,7 @@ namespace Mirai_Store.Internal.Contants
 
     public static class DatabaseConst
     {
-        public static string ConnectionString = Environment.GetEnvironmentVariable("DB_URI") ?? "mongodb+srv://Ikkun:FhyWO9cGs22RfA9R@cluster0.zvdubot.mongodb.net/Game?appName=Cluster0";
+        public static string ConnectionString = Environment.GetEnvironmentVariable("DB_DSN") ?? Environment.GetEnvironmentVariable("DB_URI") ?? "mongodb+srv://Ikkun:FhyWO9cGs22RfA9R@cluster0.zvdubot.mongodb.net/Game?appName=Cluster0";
         public static string DatabaseName = Environment.GetEnvironmentVariable("DB_DATABASE") ?? "store_game";
     }
 

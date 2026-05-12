@@ -27,8 +27,8 @@ return [
 
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('DB_URI'),
-            'database' => env('DB_DATABASE'),
+            'dsn' => env('DB_DSN', env('DB_URI')),
+            'database' => env('DB_DATABASE', 'store_game'),
         ],
 
         'mysql' => [

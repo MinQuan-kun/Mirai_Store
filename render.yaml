@@ -12,7 +12,7 @@ services:
         value: http://+:5185
       
       # Database
-      - key: DB_URI
+      - key: DB_DSN
         sync: false
       - key: DB_DATABASE
         value: store_game
@@ -61,7 +61,7 @@ services:
       # Database
       - key: DB_CONNECTION
         value: mongodb
-      - key: DB_URI
+      - key: DB_DSN
         sync: false
       - key: DB_DATABASE
         value: store_game
