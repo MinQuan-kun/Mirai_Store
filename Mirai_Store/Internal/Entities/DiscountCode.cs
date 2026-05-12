@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Mirai_Store.Internal.Entities
 {
+    [BsonIgnoreExtraElements]
     public class DiscountCode
     {
         [BsonId]
