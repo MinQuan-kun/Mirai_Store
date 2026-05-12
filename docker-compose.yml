@@ -1,0 +1,39 @@
+services:
+  # 1. Backend .NET
+  mirai-store-backend:
+    build:
+      context: ./Mirai_Store
+      dockerfile: Dockerfile
+    container_name: mirai-store-backend
+    ports:
+      - "5185:5185"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - mirai-network
+
+  # 2. Frontend PHP (Laravel)
+  mirai-store-fe:
+    build:
+      context: ./Mirai_Store_FE
+      dockerfile: Dockerfile
+    container_name: mirai-store-fe
+    ports:
+      - "8000:80"
+    volumes:
+      - ./Mirai_Store_FE:/var/www/html
+      - /var/www/html/node_modules
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_CONNECTION=sqlite
+      # Ép URL Backend trỏ tới container backend thay vì localhost nếu cần xử lý từ server PHP
+      - BACKEND_URL=http://mirai-store-backend:5185/api
+    depends_on:
+      - mirai-store-backend
+    networks:
+      - mirai-network
+
+networks:
+  mirai-network:
+    driver: bridge
