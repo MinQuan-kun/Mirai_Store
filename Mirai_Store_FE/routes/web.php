@@ -18,6 +18,7 @@ Route::get('/debug', function () {
     // Check PHP extensions
     $results['php_version'] = PHP_VERSION;
     $results['mongodb_extension'] = extension_loaded('mongodb') ? 'Loaded' : 'NOT LOADED';
+    $results['app_key_set'] = !empty(env('APP_KEY')) ? 'Yes' : 'NO (MISSING!)';
 
     // Check DB Connection
     try {

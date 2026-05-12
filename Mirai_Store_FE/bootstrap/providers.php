@@ -4,5 +4,5 @@ use App\Providers\AppServiceProvider;
 
 return [
     AppServiceProvider::class,
-    MongoDB\Laravel\MongoDBServiceProvider::class,
+    ...((class_exists('MongoDB\Laravel\MongoDBServiceProvider')) ? [MongoDB\Laravel\MongoDBServiceProvider::class] : []),
 ];
