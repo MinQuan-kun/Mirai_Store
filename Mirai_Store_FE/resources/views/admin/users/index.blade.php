@@ -12,6 +12,13 @@
             </div>
         </div>
 
+        @if(isset($error))
+            <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 px-4 py-3 rounded-lg flex items-center gap-3">
+                <i class="fa-solid fa-circle-exclamation text-lg"></i>
+                <span class="text-sm font-medium">{{ $error }}</span>
+            </div>
+        @endif
+
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead class="bg-gray-50 dark:bg-gray-700">

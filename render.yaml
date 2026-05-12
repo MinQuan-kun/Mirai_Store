@@ -50,7 +50,11 @@ services:
           type: web
           property: host
       - key: BACKEND_URL
-        value: http://mirai-backend:5185/api
+        fromService:
+          name: mirai-backend
+          type: web
+          property: host
+          suffix: /api
       - key: VITE_BACKEND_URL
         fromService:
           name: mirai-backend

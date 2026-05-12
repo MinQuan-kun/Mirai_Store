@@ -15,7 +15,15 @@ class UserAdminController extends Controller
     public function index()
     {
         $response = $this->backend->get('admin/users');
-        $users = $response->ok() ? ($response->json('data') ?? []) : [];
+        
+        if ($response->failed()) {
+            return view('admin.users.index', [
+                'users' => [],
+                'error' => 'Lỗi kết nối Backend: ' . $this->extractMessage($response)
+            ]);
+        }
+
+        $users = $response->json('data') ?? [];
 
         return view('admin.users.index', compact('users'));
     }
