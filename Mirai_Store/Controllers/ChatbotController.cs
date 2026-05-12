@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Mirai_Store.Internal.DataContext;
+using Mirai_Store.Internal.Contants;
 using Mirai_Store.Internal.Entities;
-using Mirai_Store.Models;
 using Mirai_Store.Models;
 using MongoDB.Driver;
 using System.Text.Json;
@@ -15,14 +15,12 @@ namespace Mirai_Store.Controllers
     {
         private readonly IMongoCollection<Game> _gameCollection;
         private readonly IMongoCollection<Category> _categoryCollection;
-        private readonly IConfiguration _configuration;
         private readonly HttpClient _httpClient;
 
-        public ChatbotController(MongoDbContext dbContext, IConfiguration configuration, IHttpClientFactory httpClientFactory)
+        public ChatbotController(MongoDbContext dbContext, IHttpClientFactory httpClientFactory)
         {
             _gameCollection = dbContext.Games;
             _categoryCollection = dbContext.Categories;
-            _configuration = configuration;
             _httpClient = httpClientFactory.CreateClient();
         }
 
@@ -33,7 +31,7 @@ namespace Mirai_Store.Controllers
 
             try
             {
-                var apiKey = _configuration["Gemini:ApiKey"];
+                var apiKey = ChatboxConst.GEMINI_API_KEY;
                 if (string.IsNullOrEmpty(apiKey)) return Ok(new { reply = "Hệ thống chatbot đang bảo trì (Thiếu API Key)." });
 
                 var allCategories = await _categoryCollection.Find(_ => true).ToListAsync();

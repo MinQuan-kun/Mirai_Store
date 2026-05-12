@@ -65,15 +65,18 @@ Route::middleware('auth.custom')->group(function () {
             $gamesResponse = $backend->get('admin/games');
             $categoriesResponse = $backend->get('admin/categories');
             $discountsResponse = $backend->get('admin/discounts');
+            $usersResponse = $backend->get('admin/users');
 
             $games = $gamesResponse->ok() ? ($gamesResponse->json('data') ?? []) : [];
             $categories = $categoriesResponse->ok() ? ($categoriesResponse->json('data') ?? []) : [];
             $discounts = $discountsResponse->ok() ? ($discountsResponse->json('data') ?? []) : [];
+            $users = $usersResponse->ok() ? ($usersResponse->json('data') ?? []) : [];
 
             $stats = [
                 'games' => count($games),
                 'categories' => count($categories),
                 'discounts' => count($discounts),
+                'users' => count($users),
             ];
 
             return view('admin.dashboard', compact('stats'));
@@ -101,6 +104,10 @@ Route::middleware('auth.custom')->group(function () {
         Route::put('/discounts/{id}', [App\Http\Controllers\Admin\DiscountAdminController::class, 'update'])->name('admin.discounts.update');
         Route::delete('/discounts/{id}', [App\Http\Controllers\Admin\DiscountAdminController::class, 'destroy'])->name('admin.discounts.destroy');
 
-        Route::get('/users', fn () => view('admin.users.index'))->name('admin.users.index');
+        Route::get('/users', [App\Http\Controllers\Admin\UserAdminController::class, 'index'])->name('admin.users.index');
+        Route::patch('/users/{id}/toggle-status', [App\Http\Controllers\Admin\UserAdminController::class, 'toggleStatus'])->name('admin.users.toggle-status');
+        Route::patch('/users/{id}/role', [App\Http\Controllers\Admin\UserAdminController::class, 'updateRole'])->name('admin.users.update-role');
+        Route::patch('/users/{id}/reset-password', [App\Http\Controllers\Admin\UserAdminController::class, 'resetPassword'])->name('admin.users.reset-password');
+        Route::delete('/users/{id}', [App\Http\Controllers\Admin\UserAdminController::class, 'destroy'])->name('admin.users.destroy');
     });
 });
