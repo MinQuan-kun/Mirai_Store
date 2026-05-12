@@ -10,8 +10,24 @@ services:
         value: Production
       - key: ASPNETCORE_URLS
         value: http://+:5185
+      
+      # Database
       - key: DB_URI
-        sync: false # User should set this in Render UI if they want to override hardcoded values
+        sync: false
+      - key: DB_DATABASE
+        value: store_game
+
+      # Cloudinary
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+
+      # Security & AI
+      - key: JWT_SECRET
+        sync: false
       - key: GEMINI_API_KEY
         sync: false
 

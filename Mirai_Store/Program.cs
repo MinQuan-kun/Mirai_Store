@@ -7,6 +7,9 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Load .env file
+DotNetEnv.Env.Load();
+
 // Register Database Context and Helpers
 builder.Services.AddScoped<MongoDbContext>();
 builder.Services.AddSingleton<JwtHelper>();
