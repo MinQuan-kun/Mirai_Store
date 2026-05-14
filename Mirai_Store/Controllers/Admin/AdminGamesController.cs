@@ -6,7 +6,6 @@ using Mirai_Store.Internal.Contants;
 using Mirai_Store.Internal.DataContext;
 using Mirai_Store.Internal.Entities;
 using Mirai_Store.Models;
-using Mirai_Store.Models;
 using MongoDB.Driver;
 
 namespace Mirai_Store.Controllers.Admin
