@@ -7,8 +7,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\WalletController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GameAdminController;
-use App\Services\BackendService;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -86,28 +86,7 @@ Route::middleware('auth.custom')->group(function () {
 
     // Admin FE routes
     Route::prefix('admin')->group(function () {
-        Route::get('/', function () {
-            $backend = app(BackendService::class);
-
-            $gamesResponse = $backend->get('admin/games');
-            $categoriesResponse = $backend->get('admin/categories');
-            $discountsResponse = $backend->get('admin/discounts');
-            $usersResponse = $backend->get('admin/users');
-
-            $games = $gamesResponse->ok() ? ($gamesResponse->json('data') ?? []) : [];
-            $categories = $categoriesResponse->ok() ? ($categoriesResponse->json('data') ?? []) : [];
-            $discounts = $discountsResponse->ok() ? ($discountsResponse->json('data') ?? []) : [];
-            $users = $usersResponse->ok() ? ($usersResponse->json('data') ?? []) : [];
-
-            $stats = [
-                'games' => count($games),
-                'categories' => count($categories),
-                'discounts' => count($discounts),
-                'users' => count($users),
-            ];
-
-            return view('admin.dashboard', compact('stats'));
-        })->name('admin.dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 
         Route::get('/games', [GameAdminController::class, 'index'])->name('admin.games.index');
         Route::get('/games/create', [GameAdminController::class, 'create'])->name('admin.games.create');

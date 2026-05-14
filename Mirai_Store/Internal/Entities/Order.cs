@@ -1,8 +1,9 @@
-﻿using MongoDB.Bson;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Mirai_Store.Internal.Entities
 {
+    [BsonIgnoreExtraElements]
     public class Order
     {
         [BsonId]

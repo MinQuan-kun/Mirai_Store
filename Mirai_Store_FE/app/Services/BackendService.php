@@ -11,7 +11,11 @@ class BackendService
 
     public function __construct()
     {
-        $this->baseUrl = config('api.backend_url');
+        $this->baseUrl = rtrim(config('api.backend_url'), '/');
+
+        if (!preg_match('/^https?:\/\//i', $this->baseUrl)) {
+            $this->baseUrl = 'https://' . $this->baseUrl;
+        }
     }
 
     
