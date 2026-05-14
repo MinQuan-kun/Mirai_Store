@@ -8,7 +8,7 @@ using MongoDB.Driver;
 namespace Mirai_Store.Controllers.Admin
 {
     [ApiController]
-    [Route("api/admin/dashboard")]
+    [Route("api/admin/stats")]
     [Authorize]
     public class AdminDashboardController : ControllerBase
     {

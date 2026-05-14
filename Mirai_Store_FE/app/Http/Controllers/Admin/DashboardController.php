@@ -17,7 +17,7 @@ class DashboardController extends Controller
     public function index()
     {
         try {
-            $response = $this->backend->get('admin/dashboard');
+            $response = $this->backend->get('admin/stats');
         } catch (\Exception $e) {
             return view('admin.dashboard', [
                 'stats' => [],

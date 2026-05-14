@@ -9,6 +9,7 @@ namespace Mirai_Store.Controllers.Admin
 {
     [ApiController]
     [Route("api/admin/users")]
+    [Authorize]
     public class AdminUsersController : ControllerBase
     {
         private readonly IMongoCollection<User> _userCollection;
