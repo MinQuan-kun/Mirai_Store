@@ -37,10 +37,17 @@ class DashboardController extends Controller
         }
 
         $data = $response->json('data') ?? [];
+        $stats = $data['stats'] ?? [];
+        $charts = $data['charts'] ?? [];
 
         return view('admin.dashboard', [
-            'stats' => $data['stats'] ?? [],
-            'charts' => $data['charts'] ?? [],
+            'totalRevenue' => $stats['revenue'] ?? 0,
+            'totalOrders' => $stats['orders'] ?? 0,
+            'totalUsers' => $stats['users'] ?? 0,
+            'totalGames' => $stats['games'] ?? 0,
+            'chartWeek' => $charts['week'] ?? [],
+            'chartMonth' => $charts['month'] ?? [],
+            'chartQuarter' => $charts['quarter'] ?? [],
             'recentOrders' => $data['recentOrders'] ?? [],
             'dashboardError' => null,
         ]);

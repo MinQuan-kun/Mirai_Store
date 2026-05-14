@@ -1,131 +1,96 @@
-@section('header_title', 'Quản lý Tài khoản')
-
 <x-admin-layout>
-    <div class="space-y-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-                <h2 class="text-2xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Danh sách người dùng</h2>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Quản lý tài khoản khách hàng và phân quyền hệ thống.</p>
-            </div>
-            <div class="flex items-center gap-3 px-4 py-2 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                <i class="fa-solid fa-users text-miku-500"></i>
-                <span class="text-sm font-bold">{{ count($users ?? []) }} thành viên</span>
+    <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h2 class="text-title-md2 font-bold text-black dark:text-white">
+            Quản lý người dùng
+        </h2>
+        <nav>
+            <ol class="flex items-center gap-2">
+                <li><a class="font-medium text-gray-500 hover:text-black dark:text-white"
+                        href="{{ route('admin.dashboard') }}">Dashboard /</a></li>
+                <li class="font-medium text-black dark:text-white">Users</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+        <div class="px-6 py-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-800">
+            <h3 class="text-xl font-bold text-black dark:text-white">Danh sách tài khoản</h3>
+            <div class="flex items-center gap-4">
+                <a href="{{ route('admin.users.create') }}"
+                    class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs ring-1 ring-gray-300 transition hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Thêm quản trị
+                </a>
+                <span class="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-md">
+                    Tổng: {{ count($users ?? []) }} users
+                </span>
             </div>
         </div>
 
-        @if(isset($error))
-            <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 px-4 py-3 rounded-2xl flex items-center gap-3 shadow-sm">
-                <i class="fa-solid fa-circle-exclamation text-lg"></i>
-                <span class="text-sm font-medium">{{ $error }}</span>
-            </div>
-        @endif
-
-        <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-            <div class="overflow-x-auto">
-                <table class="w-full text-left">
+        <div class="p-6">
+            <div class="max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+                <table class="w-full table-auto">
                     <thead>
-                        <tr class="text-[10px] font-black uppercase tracking-widest text-gray-400 bg-gray-50 dark:bg-gray-900/50">
-                            <th class="px-6 py-4">Người dùng</th>
-                            <th class="px-6 py-4">Email / ID</th>
-                            <th class="px-6 py-4">Phân quyền</th>
-                            <th class="px-6 py-4">Trạng thái</th>
-                            <th class="px-6 py-4">Số dư</th>
-                            <th class="px-6 py-4 text-right">Thao tác</th>
+                        <tr class="border-b border-gray-100 dark:border-gray-800">
+                            <th class="px-5 py-3 text-left font-medium text-gray-500">User</th>
+                            <th class="px-5 py-3 text-left font-medium text-gray-500">Vai trò</th>
+                            <th class="px-5 py-3 text-left font-medium text-gray-500">Trạng thái</th>
+                            <th class="px-5 py-3 text-left font-medium text-gray-500">Ngày tham gia</th>
+                            <th class="px-5 py-3 text-left font-medium text-gray-500">Thao tác</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-50 dark:divide-gray-700">
-                        @forelse($users ?? [] as $user)
-                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition group">
+                    <tbody>
+                        @foreach ($users ?? [] as $user)
+                            <tr class="border-b border-gray-50 dark:border-gray-800/50">
                                 <td class="px-6 py-4">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-xl bg-miku-50 dark:bg-miku-900/30 flex items-center justify-center overflow-hidden border border-miku-100 dark:border-miku-800 shrink-0">
-                                            @if(!empty($user['avatar']))
-                                                <img src="{{ $user['avatar'] }}" alt="" class="w-full h-full object-cover">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-10 w-10 rounded-full overflow-hidden border border-gray-200">
+                                            @if (!empty($user['avatar']))
+                                                <img src="{{ $user['avatar'] }}" alt="Avatar" class="h-full w-full object-cover">
                                             @else
-                                                <span class="text-sm font-black text-miku-600 dark:text-miku-400">{{ strtoupper(substr($user['name'] ?? '?', 0, 1)) }}</span>
+                                                <img src="https://ui-avatars.com/api/?name={{ urlencode($user['name'] ?? 'U') }}&background=random" class="h-full w-full object-cover">
                                             @endif
                                         </div>
                                         <div>
-                                            <div class="font-bold text-gray-900 dark:text-white">{{ $user['name'] ?? 'N/A' }}</div>
-                                            <div class="text-[10px] text-gray-400 uppercase font-mono">Tham gia: {{ \Carbon\Carbon::parse($user['createdAt'] ?? now())->format('d/m/Y') }}</div>
+                                            <h5 class="font-semibold text-black dark:text-white">{{ $user['name'] ?? 'N/A' }}</h5>
+                                            <p class="text-sm text-gray-500">{{ $user['email'] ?? '' }}</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ $user['email'] ?? 'N/A' }}</div>
-                                    <div class="text-[9px] text-gray-400 font-mono mt-0.5">{{ $user['id'] ?? 'N/A' }}</div>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ ($user['role'] ?? '') === 'admin' ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800' }}">
+                                        {{ ucfirst($user['role'] ?? 'user') }}
+                                    </span>
                                 </td>
                                 <td class="px-6 py-4">
-                                    @if(($user['role'] ?? 'user') === 'admin')
-                                        <span class="inline-flex items-center gap-1 rounded-lg bg-purple-100 dark:bg-purple-900/40 px-2 py-1 text-[10px] font-black uppercase text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
-                                            <i class="fa-solid fa-crown"></i> Admin
-                                        </span>
-                                    @else
-                                        <span class="inline-flex items-center gap-1 rounded-lg bg-blue-100 dark:bg-blue-900/40 px-2 py-1 text-[10px] font-black uppercase text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
-                                            <i class="fa-solid fa-user-shield"></i> User
-                                        </span>
-                                    @endif
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ ($user['status'] ?? '') === 'active' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                        {{ ucfirst($user['status'] ?? 'active') }}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500">
+                                    {{ !empty($user['createdAt']) ? \Carbon\Carbon::parse($user['createdAt'])->format('d/m/Y') : 'N/A' }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    @if(($user['status'] ?? 'active') === 'active')
-                                        <span class="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-2.5 py-1 text-[10px] font-black uppercase text-green-700 dark:bg-green-900/30 dark:text-green-400">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Hoạt động
-                                        </span>
-                                    @else
-                                        <span class="inline-flex items-center gap-1.5 rounded-full bg-red-100 px-2.5 py-1 text-[10px] font-black uppercase text-red-700 dark:bg-red-900/30 dark:text-red-400">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Đã khóa
-                                        </span>
-                                    @endif
-                                </td>
-                                <td class="px-6 py-4 font-black text-gray-900 dark:text-white">
-                                    {{ number_format((float)($user['balance'] ?? 0), 0, ',', '.') }}đ
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <div class="flex items-center justify-end gap-1.5">
-                                        {{-- Toggle Status --}}
-                                        <form method="POST" action="{{ route('admin.users.toggle-status', $user['id'] ?? '') }}">
-                                            @csrf
-                                            @method('PATCH')
-                                            <button type="submit" title="{{ ($user['status'] ?? 'active') === 'active' ? 'Khóa tài khoản' : 'Mở khóa' }}"
-                                                class="p-2 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-500 hover:text-orange-500 transition shadow-sm border border-gray-100 dark:border-gray-600">
-                                                <i class="fa-solid {{ ($user['status'] ?? 'active') === 'active' ? 'fa-user-lock' : 'fa-user-check' }}"></i>
+                                    <div class="flex items-center space-x-3">
+                                        <form action="{{ route('admin.users.toggle-status', $user['id'] ?? '') }}" method="POST">
+                                            @csrf @method('PATCH')
+                                            <button type="submit" class="text-gray-500 hover:text-blue-600 transition-colors">
+                                                <i class="fa-solid fa-user-slash"></i>
                                             </button>
                                         </form>
-    
-                                        {{-- Reset Password --}}
-                                        <form method="POST" action="{{ route('admin.users.reset-password', $user['id'] ?? '') }}"
-                                            onsubmit="return confirm('Reset mật khẩu của {{ $user['name'] ?? '' }} về 123456?');">
-                                            @csrf
-                                            @method('PATCH')
-                                            <button type="submit" title="Reset mật khẩu"
-                                                class="p-2 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-500 hover:text-blue-500 transition shadow-sm border border-gray-100 dark:border-gray-600">
-                                                <i class="fa-solid fa-key"></i>
-                                            </button>
-                                        </form>
-    
-                                        {{-- Delete --}}
-                                        <form method="POST" action="{{ route('admin.users.destroy', $user['id'] ?? '') }}"
-                                            onsubmit="return confirm('Xóa vĩnh viễn tài khoản {{ $user['name'] ?? '' }}?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" title="Xóa tài khoản"
-                                                class="p-2 rounded-lg bg-gray-50 dark:bg-gray-700 text-red-400 hover:text-red-600 transition shadow-sm border border-gray-100 dark:border-gray-600">
+                                        <form action="{{ route('admin.users.destroy', $user['id'] ?? '') }}" method="POST" onsubmit="return confirm('Xóa tài khoản này?')">
+                                            @csrf @method('DELETE')
+                                            <button type="submit" class="text-gray-500 hover:text-red-600 transition-colors">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </form>
                                     </div>
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="6" class="px-6 py-20 text-center">
-                                    <div class="flex flex-col items-center">
-                                        <i class="fa-solid fa-user-slash text-5xl text-gray-200 dark:text-gray-700 mb-4"></i>
-                                        <p class="text-gray-400 italic">Không tìm thấy người dùng nào.</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>

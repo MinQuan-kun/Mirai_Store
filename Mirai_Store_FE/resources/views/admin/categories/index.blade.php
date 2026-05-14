@@ -1,65 +1,89 @@
-@section('header_title', 'Quản lý Danh mục')
-
 <x-admin-layout>
-    <div class="space-y-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-                <h2 class="text-2xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Danh mục sản phẩm</h2>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Quản lý các thể loại game trong hệ thống.</p>
+    <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h2 class="text-title-md2 font-bold text-black dark:text-white">
+            Quản lý Thể loại
+        </h2>
+        <nav>
+            <ol class="flex items-center gap-2">
+                <li>
+                    <a class="font-medium text-gray-500 hover:text-black dark:text-white" href="{{ route('admin.dashboard') }}">
+                        Dashboard /
+                    </a>
+                </li>
+                <li class="font-medium text-black dark:text-white">Categories</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+        <div class="px-6 py-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-800">
+            <h3 class="text-xl font-bold text-black dark:text-white">
+                Danh sách thể loại
+            </h3>
+            <div class="flex items-center gap-4">
+                <span
+                    class="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-md dark:bg-gray-700 dark:text-white">
+                    Tổng: {{ count($categories ?? []) }} thể loại
+                </span>
+                <a href="{{ route('admin.categories.create') }}"
+                    class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs ring-1 ring-gray-300 transition hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03]">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="3">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Thêm Thể loại
+                </a>
             </div>
-            <a href="{{ route('admin.categories.create') }}"
-                class="inline-flex items-center gap-2 rounded-xl bg-miku-500 px-6 py-3 text-sm font-bold text-white hover:bg-miku-600 shadow-lg shadow-miku-500/30 transition-all hover:-translate-y-0.5">
-                <i class="fa-solid fa-plus"></i>
-                Thêm Danh Mục
-            </a>
         </div>
 
-        <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-            <div class="overflow-x-auto">
-                <table class="w-full text-left">
+        <div class="p-6">
+            <div class="max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+                <table class="w-full table-auto">
                     <thead>
-                        <tr class="text-[10px] font-black uppercase tracking-widest text-gray-400 bg-gray-50 dark:bg-gray-900/50">
-                            <th class="px-6 py-4">Tên danh mục</th>
-                            <th class="px-6 py-4">Mô tả</th>
-                            <th class="px-6 py-4 text-right">Thao tác</th>
+                        <tr class="border-b border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-white/5">
+                            <th class="px-5 py-3 sm:px-6">
+                                <p class="text-left font-medium text-gray-500 text-theme-xs dark:text-gray-400">Tên thể loại</p>
+                            </th>
+                            <th class="px-5 py-3 sm:px-6">
+                                <p class="text-left font-medium text-gray-500 text-theme-xs dark:text-gray-400">Đường dẫn (Slug)</p>
+                            </th>
+                            <th class="px-5 py-3 sm:px-6 text-right">
+                                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Thao tác</p>
+                            </th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-50 dark:divide-gray-700">
-                        @forelse($categories ?? [] as $cat)
-                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition group">
+                    <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                        @foreach ($categories ?? [] as $category)
+                            <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
                                 <td class="px-6 py-4">
-                                    <div class="font-bold text-gray-900 dark:text-white">{{ $cat['name'] ?? $cat['Name'] ?? 'Untitled' }}</div>
-                                    <div class="text-[10px] font-mono text-gray-400 uppercase mt-1">ID: {{ $cat['id'] ?? $cat['Id'] ?? 'N/A' }}</div>
+                                    <h5 class="font-semibold text-black dark:text-white">{{ $category['name'] ?? 'N/A' }}</h5>
                                 </td>
-                                <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 max-w-md">
-                                    {{ \Illuminate\Support\Str::limit($cat['description'] ?? $cat['Description'] ?? '', 120) }}
+                                <td class="px-6 py-4">
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 italic">/{{ $category['slug'] ?? '' }}</p>
                                 </td>
-                                <td class="px-6 py-4 text-right">
-                                    <div class="flex items-center justify-end gap-2">
-                                        <a href="{{ route('admin.categories.edit', $cat['id'] ?? $cat['Id'] ?? '') }}"
-                                            class="p-2 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-500 hover:text-miku-500 transition shadow-sm border border-gray-100 dark:border-gray-600">
-                                            <i class="fa-solid fa-pen-to-square"></i>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center justify-end space-x-3">
+                                        <a href="{{ route('admin.categories.edit', $category['id'] ?? '') }}"
+                                            class="p-2 rounded-full text-gray-500 hover:bg-gray-100 transition-all"
+                                            title="Chỉnh sửa">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                            </svg>
                                         </a>
-                                        <form method="POST" action="{{ route('admin.categories.destroy', $cat['id'] ?? $cat['Id'] ?? '') }}" onsubmit="return confirm('Xóa danh mục này?');">
+                                        <form action="{{ route('admin.categories.destroy', $category['id'] ?? '') }}" method="POST" onsubmit="return confirm('Xóa danh mục này?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="p-2 rounded-lg bg-gray-50 dark:bg-gray-700 text-red-400 hover:text-red-600 transition shadow-sm border border-gray-100 dark:border-gray-600">
-                                                <i class="fa-solid fa-trash"></i>
+                                            <button type="submit" class="p-2 rounded-full text-gray-500 hover:bg-red-50 hover:text-red-600 transition-all" title="Xóa">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                                </svg>
                                             </button>
                                         </form>
                                     </div>
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="3" class="px-6 py-20 text-center">
-                                    <div class="flex flex-col items-center">
-                                        <i class="fa-solid fa-folder-open text-5xl text-gray-200 dark:text-gray-700 mb-4"></i>
-                                        <p class="text-gray-400 italic">Chưa có danh mục nào.</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>

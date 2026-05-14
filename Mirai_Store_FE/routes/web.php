@@ -111,9 +111,12 @@ Route::middleware('auth.custom')->group(function () {
         Route::delete('/discounts/{id}', [App\Http\Controllers\Admin\DiscountAdminController::class, 'destroy'])->name('admin.discounts.destroy');
 
         Route::get('/users', [App\Http\Controllers\Admin\UserAdminController::class, 'index'])->name('admin.users.index');
+        Route::get('/users/create', [App\Http\Controllers\Admin\UserAdminController::class, 'create'])->name('admin.users.create');
         Route::patch('/users/{id}/toggle-status', [App\Http\Controllers\Admin\UserAdminController::class, 'toggleStatus'])->name('admin.users.toggle-status');
         Route::patch('/users/{id}/role', [App\Http\Controllers\Admin\UserAdminController::class, 'updateRole'])->name('admin.users.update-role');
         Route::patch('/users/{id}/reset-password', [App\Http\Controllers\Admin\UserAdminController::class, 'resetPassword'])->name('admin.users.reset-password');
         Route::delete('/users/{id}', [App\Http\Controllers\Admin\UserAdminController::class, 'destroy'])->name('admin.users.destroy');
+
+        Route::get('/orders', [DashboardController::class, 'index'])->name('admin.orders.index');
     });
 });

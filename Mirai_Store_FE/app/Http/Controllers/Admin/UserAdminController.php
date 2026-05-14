@@ -28,6 +28,11 @@ class UserAdminController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
     public function toggleStatus(string $id)
     {
         $response = $this->backend->patch("admin/users/{$id}/toggle-status");
